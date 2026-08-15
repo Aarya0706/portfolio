@@ -153,7 +153,6 @@ Built **TaskBoard**, a full-stack task management system using Flask and MySQL.
 * 🤖 ServiceNow Virtual Internship — Agentic AI & workflow automation
 * 🔬 Co-authored research paper: **"Edge Computing for Intelligent Systems"**
 * 🧩 Completed the **50-day #DrGViswanathanChallenge**
-* 👥 Technical Core Member — **IEEE Student Branch, VIT Bhopal**
 
 ---
 
