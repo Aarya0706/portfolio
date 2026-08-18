@@ -317,29 +317,38 @@
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style id="reference-hero-layout">
-  /* First screen: animation only, matching the supplied reference layout. */
+<style id="consolidated-hero-layout">
+  /* Hero: animation first, then the Aarya/Shirsath content below it. */
   #home{
-    min-height:calc(100vh - 101px);
+    position:relative;
+    min-height:0;
     height:auto;
     padding:0;
-    overflow:hidden;
+    overflow:visible;
   }
   #home .hero-grid{
-    display:block;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
     width:100%;
+    gap:0;
     text-align:center;
   }
   #home .hero-visual{
+    order:0;
+    flex:0 0 auto;
+    position:relative;
+    display:block;
     width:100%;
     height:calc(100vh - 101px);
     min-height:620px;
-    aspect-ratio:auto;
     margin:0;
     transform:none;
-    order:initial;
+    z-index:1;
   }
   #home .hero-video-wrap{
+    position:absolute;
     inset:0;
     border:0;
     border-radius:0;
@@ -356,12 +365,17 @@
   #home .hero-video-wrap::after{display:none;}
   #home .hero-video-glow{display:none;}
 
-  /* Content area: stays below the animation, matching the supplied reference. */
   #home .hero-text{
+    order:1;
+    flex:0 0 auto;
+    position:relative;
+    display:block;
     width:min(1300px,94vw);
     min-width:0;
     margin:0 auto;
     padding:72px 0 72px;
+    z-index:2;
+    clear:both;
     text-align:center;
   }
   #home .eyebrow{
@@ -375,7 +389,13 @@
   #home .eyebrow::before{content:"";}
 
   #home h1.name{
+    position:relative;
+    display:block;
     width:100%;
+    height:auto;
+    min-height:0;
+    margin:0;
+    padding:0;
     text-align:center;
     font-family:var(--display, 'Cormorant Garamond', serif);
     font-style:italic;
@@ -387,17 +407,31 @@
     overflow:visible;
   }
   #home h1.name .line{
-    width:100%;
+    position:relative;
     display:block;
-    overflow:visible;
+    width:100%;
+    height:auto;
+    min-height:1em;
     padding-bottom:.10em;
+    overflow:visible;
   }
-  #home h1.name .line span{overflow:visible;}
-  #home h1.name .accent{color:#d9460b;}
+  #home h1.name .line span{
+    position:relative;
+    display:inline-block;
+    transform:translateY(0);
+    overflow:visible;
+  }
+  #home h1.name .accent{
+    display:inline;
+    color:#d9460b;
+  }
 
   #home .role-line{
+    position:relative;
+    display:block;
     max-width:1320px;
     margin:42px auto 0;
+    clear:both;
     color:#f1efec;
     font-family:var(--body-ui, 'DM Sans', sans-serif);
     font-size:clamp(22px,2.15vw,31px);
@@ -405,13 +439,18 @@
     opacity:1;
     animation:none;
   }
+
   #home .metrics-row{
+    position:relative;
+    display:flex;
     justify-content:center;
     flex-wrap:wrap;
     gap:14px;
-    margin-top:42px;
+    margin:42px auto 0;
+    clear:both;
   }
   #home .metric-chip{
+    position:relative;
     opacity:1;
     transform:none;
     animation:none;
@@ -431,205 +470,56 @@
     line-height:1.1;
     margin-bottom:7px;
   }
+
   #home .scroll-cue{
+    order:2;
     position:relative;
+    display:flex;
     left:auto;
     bottom:auto;
     margin:0;
     padding:0 0 36px 6vw;
+    clear:both;
+    z-index:2;
     font-family:var(--mono);
     font-size:11px;
     color:#8d8a87;
   }
 
   @media(max-width:720px){
-    #home .hero-visual{min-height:420px;height:calc(100vh - 86px);}
-    #home .hero-text{width:90vw;padding:54px 0 58px;}
-    #home .eyebrow{font-size:11px;letter-spacing:.16em;margin-bottom:22px;}
-    #home h1.name{font-size:clamp(58px,16vw,84px);}
-    #home .role-line{font-size:18px;line-height:1.6;margin-top:30px;}
-    #home .metrics-row{gap:10px;margin-top:30px;}
-    #home .metric-chip{min-width:0;padding:11px 14px;font-size:11px;}
-    #home .metric-chip b{font-size:19px;}
-  }
-</style>
-
-
-<style id="final-hero-layout-fix">
-  /* Keep the animated panel fully above the portfolio content. */
-  #home .hero-grid{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    justify-content:flex-start !important;
-    width:100% !important;
-    gap:0 !important;
-  }
-  #home .hero-visual{
-    order:0 !important;
-    position:relative !important;
-    display:block !important;
-    width:100% !important;
-    height:calc(100vh - 101px) !important;
-    min-height:620px !important;
-    margin:0 !important;
-    transform:none !important;
-    flex:0 0 auto !important;
-    z-index:1 !important;
-  }
-  #home .hero-video-wrap{position:absolute !important;inset:0 !important;}
-  #home .hero-text{
-    order:1 !important;
-    position:relative !important;
-    display:block !important;
-    width:min(1300px,94vw) !important;
-    margin:0 auto !important;
-    padding:72px 0 72px !important;
-    clear:both !important;
-    z-index:2 !important;
-    text-align:center !important;
-  }
-  #home .scroll-cue{
-    position:relative !important;
-    order:2 !important;
-    z-index:2 !important;
-    clear:both !important;
-  }
-  @media(max-width:720px){
-    #home .hero-visual{height:calc(100vh - 86px) !important;min-height:420px !important;}
-    #home .hero-text{width:90vw !important;padding:54px 0 58px !important;}
-  }
-</style>
-
-<style id="ultimate-home-flow-fix">
-  /* Definitive home flow: animation first, then name, then description, then metrics. */
-  #home{
-    position:relative !important;
-    padding:0 !important;
-    overflow:visible !important;
-  }
-  #home .hero-grid{
-    display:block !important;
-    width:100% !important;
-    text-align:center !important;
-  }
-  #home .hero-visual{
-    position:relative !important;
-    display:block !important;
-    width:100% !important;
-    height:calc(100vh - 101px) !important;
-    min-height:620px !important;
-    margin:0 !important;
-    transform:none !important;
-    order:initial !important;
-    z-index:1 !important;
-  }
-  #home .hero-video-wrap{
-    position:absolute !important;
-    inset:0 !important;
-  }
-  #home .hero-text{
-    position:relative !important;
-    display:block !important;
-    width:min(1300px,94vw) !important;
-    margin:0 auto !important;
-    padding:72px 0 72px !important;
-    z-index:2 !important;
-    clear:both !important;
-    text-align:center !important;
-  }
-  #home .eyebrow{margin:0 0 26px !important;}
-  #home h1.name{
-    position:relative !important;
-    display:block !important;
-    width:100% !important;
-    height:auto !important;
-    min-height:0 !important;
-    margin:0 !important;
-    padding:0 !important;
-    overflow:visible !important;
-  }
-  #home h1.name .line{
-    position:relative !important;
-    display:block !important;
-    height:auto !important;
-    min-height:1em !important;
-    padding-bottom:.10em !important;
-    overflow:visible !important;
-  }
-  #home h1.name .line span{
-    position:relative !important;
-    display:inline-block !important;
-    transform:translateY(0) !important;
-  }
-  #home h1.name .accent{display:inline !important;}
-  #home .role-line{
-    position:relative !important;
-    display:block !important;
-    margin:42px auto 0 !important;
-    max-width:1320px !important;
-    clear:both !important;
-  }
-  #home .metrics-row{
-    position:relative !important;
-    display:flex !important;
-    justify-content:center !important;
-    flex-wrap:wrap !important;
-    clear:both !important;
-    margin:42px auto 0 !important;
-  }
-  #home .metric-chip{position:relative !important;}
-  #home .scroll-cue{
-    position:relative !important;
-    display:flex !important;
-    margin:0 !important;
-    clear:both !important;
-    z-index:2 !important;
-  }
-  @media(max-width:720px){
-    #home .hero-visual{height:calc(100vh - 86px) !important;min-height:420px !important;}
-    #home .hero-text{width:90vw !important;padding:54px 0 58px !important;}
-    #home .role-line{margin-top:30px !important;}
-    #home .metrics-row{margin-top:30px !important;}
-  }
-</style>
-
-
-<style id="final-strict-vertical-home">
-  /* Strict vertical order: animation first, then portfolio content. */
-  #home .hero-grid{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:stretch !important;
-    justify-content:flex-start !important;
-    width:100% !important;
-    gap:0 !important;
-  }
-  #home .hero-visual{
-    order:0 !important;
-    flex:0 0 auto !important;
-    width:100% !important;
-    height:calc(100vh - 101px) !important;
-    min-height:620px !important;
-    position:relative !important;
-    margin:0 !important;
-  }
-  #home .hero-text{
-    order:1 !important;
-    flex:0 0 auto !important;
-    width:min(1300px,94vw) !important;
-    margin:0 auto !important;
-    padding:72px 0 72px !important;
-    position:relative !important;
-    z-index:2 !important;
-  }
-  #home .scroll-cue{
-    order:2 !important;
-    position:relative !important;
-  }
-  @media(max-width:720px){
-    #home .hero-visual{height:calc(100vh - 86px) !important;min-height:420px !important;}
-    #home .hero-text{width:90vw !important;padding:54px 0 58px !important;}
+    #home .hero-visual{
+      height:calc(100vh - 86px);
+      min-height:420px;
+    }
+    #home .hero-text{
+      width:90vw;
+      padding:54px 0 58px;
+    }
+    #home .eyebrow{
+      font-size:11px;
+      letter-spacing:.16em;
+      margin-bottom:22px;
+    }
+    #home h1.name{
+      font-size:clamp(58px,16vw,84px);
+    }
+    #home .role-line{
+      font-size:18px;
+      line-height:1.6;
+      margin-top:30px;
+    }
+    #home .metrics-row{
+      gap:10px;
+      margin-top:30px;
+    }
+    #home .metric-chip{
+      min-width:0;
+      padding:11px 14px;
+      font-size:11px;
+    }
+    #home .metric-chip b{
+      font-size:19px;
+    }
   }
 </style>
 
