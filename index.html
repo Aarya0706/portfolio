@@ -546,6 +546,7 @@
     <a href="#projects" class="quick-tab"><span class="quick-icon">▣</span><span>Projects</span></a>
     <a href="#experience" class="quick-tab"><span class="quick-icon">↗</span><span>Internship</span></a>
     <a href="#stack" class="quick-tab"><span class="quick-icon">⌘</span><span>Stack</span></a>
+    <a href="#activity" class="quick-tab"><span class="quick-icon">▦</span><span>Activity</span></a>
     <a href="#education" class="quick-tab"><span class="quick-icon">E</span><span>Education</span></a>
     <a href="#certifications" class="quick-tab"><span class="quick-icon">✓</span><span>Certificates</span></a>
     <a href="#community" class="quick-tab"><span class="quick-icon">◎</span><span>Competition</span></a>
@@ -692,6 +693,20 @@
         <li>OOP</li>
         <li>System Design</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section id="activity">
+  <div class="sec-label">— / Activity</div>
+  <h2 class="sec-title reveal">Days I code.</h2>
+  <div class="activity-panel reveal">
+    <p class="activity-copy">A public commit log from <a href="https://github.com/Aarya0706" target="_blank">github.com/Aarya0706</a> — this is what shipping six deployed products actually looks like, one green square at a time.</p>
+    <div class="contrib-card">
+      <div class="contrib-scroll">
+        <img class="contrib-graph" src="https://ghchart.rshah.org/e84a0b/Aarya0706" alt="Aarya Shirsath's GitHub contribution graph" loading="lazy">
+      </div>
+      <a class="proj-link contrib-link" href="https://github.com/Aarya0706" target="_blank">View GitHub profile →</a>
     </div>
   </div>
 </section>
@@ -1001,7 +1016,7 @@
   }
 
   // Single-file page tabs: all content stays embedded, while one section is visible at a time.
-  const pageIds = ['home','about','stack','experience','projects','education','certifications','community','contact'];
+  const pageIds = ['home','about','stack','activity','experience','projects','education','certifications','community','contact'];
   function showPage(id, updateUrl=false){
     const pageId = pageIds.includes(id) ? id : 'home';
     pageIds.forEach(page=>document.body.classList.remove(`page-${page}`));
@@ -1929,6 +1944,79 @@
     #about .about-long{font-size:15px;line-height:1.8;}
   }
 </style>
+
+<style id="animation-enhancements">
+  /* ---------- Activity / GitHub contribution graph page ---------- */
+  body.page-activity #activity{display:block !important;}
+  .activity-panel{max-width:900px;}
+  .activity-copy{color:var(--ink-dim);font-size:15px;line-height:1.8;margin-bottom:28px;max-width:64ch;}
+  .activity-copy a{color:var(--amber);border-bottom:1px solid rgba(232,74,11,.4);}
+  .contrib-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px 24px 22px;
+  }
+  .contrib-scroll{overflow-x:auto;padding-bottom:6px;}
+  .contrib-graph{display:block;min-width:640px;width:100%;filter:saturate(1.15);}
+  .contrib-link{display:inline-block;margin-top:18px;}
+
+  /* ---------- staggered card entrance ---------- */
+  .stack-groups.reveal .stack-group,
+  .proj-list.reveal .proj,
+  .cert-grid.reveal .cert{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .55s ease, transform .55s ease;
+  }
+  .stack-groups.reveal.in .stack-group,
+  .proj-list.reveal.in .proj,
+  .cert-grid.reveal.in .cert{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .stack-groups .stack-group:nth-child(1),.proj-list .proj:nth-child(1),.cert-grid .cert:nth-child(1){transition-delay:.04s;}
+  .stack-groups .stack-group:nth-child(2),.proj-list .proj:nth-child(2),.cert-grid .cert:nth-child(2){transition-delay:.10s;}
+  .stack-groups .stack-group:nth-child(3),.proj-list .proj:nth-child(3),.cert-grid .cert:nth-child(3){transition-delay:.16s;}
+  .stack-groups .stack-group:nth-child(4),.proj-list .proj:nth-child(4),.cert-grid .cert:nth-child(4){transition-delay:.22s;}
+  .stack-groups .stack-group:nth-child(5),.proj-list .proj:nth-child(5),.cert-grid .cert:nth-child(5){transition-delay:.28s;}
+  .stack-groups .stack-group:nth-child(6),.cert-grid .cert:nth-child(6){transition-delay:.34s;}
+  .stack-groups .stack-group:nth-child(7),.cert-grid .cert:nth-child(7){transition-delay:.40s;}
+  .cert-grid .cert:nth-child(8){transition-delay:.46s;}
+  .cert-grid .cert:nth-child(9){transition-delay:.52s;}
+
+  /* ---------- cursor-reactive hover glow ---------- */
+  .stack-group, .cert, .proj{position:relative;overflow:hidden;}
+  .stack-group::before, .cert::before, .proj::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(232,74,11,.14), transparent 72%);
+    opacity:0;
+    transition:opacity .3s ease;
+    pointer-events:none;
+    z-index:0;
+  }
+  .stack-group:hover::before, .cert:hover::before, .proj:hover::before{opacity:1;}
+  .stack-group > *, .cert > *, .proj > *{position:relative;z-index:1;}
+
+  @media(max-width:720px){
+    .contrib-graph{min-width:560px;}
+  }
+</style>
+
+<script id="animation-enhancements-js">
+  (function(){
+    // cursor-reactive glow on interactive cards
+    document.querySelectorAll('.stack-group, .cert, .proj').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
