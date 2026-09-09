@@ -608,6 +608,24 @@
         <a href="https://www.linkedin.com/in/aarya-shirsath-9b7684340/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>↗</span></a>
         <a href="mailto:arshir07@gmail.com"><span>Email</span><span>↗</span></a>
       </div>
+      <div class="stat-strip reveal">
+        <div class="stat"><b data-count="6">0</b><span>Products shipped</span></div>
+        <div class="stat"><b data-count="482">0</b><span>Contributions this year</span></div>
+        <div class="stat"><b data-count="6.3" data-decimal="1" data-suffix="M">0</b><span>Transactions modeled</span></div>
+        <div class="stat"><b data-count="10" data-prefix="Top " data-suffix="%">0</b><span>CodeVita global rank</span></div>
+      </div>
+      <div class="hobby-block reveal">
+        <div class="sec-label" style="margin-bottom:14px;">Off-script</div>
+        <div class="hobby-row">
+          <div class="hobby-item"><span class="hobby-icon">☕</span><span>Coffee — allegedly a person, mostly just caffeine</span></div>
+          <div class="hobby-item"><span class="hobby-icon">✈️</span><span>Solo travel — chasing new cities alone, one boarding pass at a time</span></div>
+          <div class="hobby-item"><span class="hobby-icon">📚</span><span>Reading — collecting books faster than I finish them</span></div>
+          <div class="hobby-item"><span class="hobby-icon">🎨</span><span>Painting — art as therapy, no canvas judges back</span></div>
+          <div class="hobby-item"><span class="hobby-icon">🎧</span><span>Music — the soundtrack to every commit I've ever made</span></div>
+          <div class="hobby-item"><span class="hobby-icon">✍️</span><span>Writing — turning bugs into blog posts nobody asked for</span></div>
+          <div class="hobby-item"><span class="hobby-icon">🧘</span><span>Yoga & movement — because burnout isn't a personality trait</span></div>
+        </div>
+      </div>
     </div>
     <div class="info-card reveal">
       <div class="row"><span>Base</span><b>Bhopal, India</b></div>
@@ -623,6 +641,24 @@
 <section id="stack">
   <div class="sec-label">04 / Stack</div>
   <h2 class="sec-title reveal">Tools I reach for.</h2>
+  <div class="icon-stack reveal">
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/python/f2f0ed" alt="Python" loading="lazy"><span>Python</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/openjdk/f2f0ed" alt="Java" loading="lazy"><span>Java</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/javascript/f2f0ed" alt="JavaScript" loading="lazy"><span>JavaScript</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/typescript/f2f0ed" alt="TypeScript" loading="lazy"><span>TypeScript</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/react/f2f0ed" alt="React" loading="lazy"><span>React</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/nextdotjs/f2f0ed" alt="Next.js" loading="lazy"><span>Next.js</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/nodedotjs/f2f0ed" alt="Node.js" loading="lazy"><span>Node.js</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/fastapi/f2f0ed" alt="FastAPI" loading="lazy"><span>FastAPI</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/postgresql/f2f0ed" alt="PostgreSQL" loading="lazy"><span>PostgreSQL</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/supabase/f2f0ed" alt="Supabase" loading="lazy"><span>Supabase</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/docker/f2f0ed" alt="Docker" loading="lazy"><span>Docker</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/amazonaws/f2f0ed" alt="AWS" loading="lazy"><span>AWS</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/git/f2f0ed" alt="Git" loading="lazy"><span>Git</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/tensorflow/f2f0ed" alt="TensorFlow" loading="lazy"><span>TensorFlow</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/langchain/f2f0ed" alt="LangChain" loading="lazy"><span>LangChain</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/github/f2f0ed" alt="GitHub" loading="lazy"><span>GitHub</span></div>
+  </div>
   <div class="stack-groups reveal">
     <div class="stack-group">
       <h4>Languages</h4>
@@ -1946,6 +1982,62 @@
 </style>
 
 <style id="animation-enhancements">
+  /* ---------- icon tech-stack grid ---------- */
+  .icon-stack{
+    display:grid;
+    grid-template-columns:repeat(8, 1fr);
+    gap:12px;
+    margin-bottom:34px;
+  }
+  .icon-tile{
+    position:relative;
+    overflow:hidden;
+    aspect-ratio:1/1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:12px;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .icon-tile:hover{border-color:var(--amber);transform:translateY(-3px);}
+  .icon-tile img{width:30%;max-width:34px;opacity:.92;position:relative;z-index:1;}
+  .icon-tile span{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-dim);position:relative;z-index:1;}
+  @media(max-width:900px){.icon-stack{grid-template-columns:repeat(4, 1fr);}}
+  @media(max-width:480px){.icon-stack{grid-template-columns:repeat(3, 1fr);gap:9px;} .icon-tile span{font-size:9px;}}
+
+  /* ---------- about stat strip ---------- */
+  .stat-strip{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+    margin-top:32px;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  .stat b{display:block;font-family:var(--mono);font-size:26px;color:var(--amber);font-weight:600;line-height:1;}
+  .stat span{display:block;margin-top:6px;font-size:11px;color:var(--ink-dim);letter-spacing:.02em;}
+  @media(max-width:640px){.stat-strip{grid-template-columns:repeat(2, 1fr);row-gap:22px;}}
+
+  /* ---------- off-script hobbies block ---------- */
+  .hobby-block{margin-top:26px;}
+  .hobby-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media(max-width:640px){.hobby-row{grid-template-columns:1fr;}}
+  .hobby-item{
+    display:flex;align-items:center;gap:10px;
+    font-size:14px;color:var(--ink-dim);
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 16px;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .hobby-item:hover{border-color:var(--amber);transform:translateX(3px);color:var(--ink);}
+  .hobby-icon{font-size:17px;line-height:1;}
+
   /* ---------- Activity / GitHub contribution graph page ---------- */
   body.page-activity #activity{display:block !important;}
   .activity-panel{max-width:900px;}
@@ -1986,8 +2078,8 @@
   .cert-grid .cert:nth-child(9){transition-delay:.52s;}
 
   /* ---------- cursor-reactive hover glow ---------- */
-  .stack-group, .cert, .proj{position:relative;overflow:hidden;}
-  .stack-group::before, .cert::before, .proj::before{
+  .stack-group, .cert, .proj, .icon-tile{position:relative;overflow:hidden;}
+  .stack-group::before, .cert::before, .proj::before, .icon-tile::before{
     content:"";
     position:absolute;
     inset:0;
@@ -1997,7 +2089,7 @@
     pointer-events:none;
     z-index:0;
   }
-  .stack-group:hover::before, .cert:hover::before, .proj:hover::before{opacity:1;}
+  .stack-group:hover::before, .cert:hover::before, .proj:hover::before, .icon-tile:hover::before{opacity:1;}
   .stack-group > *, .cert > *, .proj > *{position:relative;z-index:1;}
 
   @media(max-width:720px){
@@ -2008,13 +2100,43 @@
 <script id="animation-enhancements-js">
   (function(){
     // cursor-reactive glow on interactive cards
-    document.querySelectorAll('.stack-group, .cert, .proj').forEach(function(card){
+    document.querySelectorAll('.stack-group, .cert, .proj, .icon-tile').forEach(function(card){
       card.addEventListener('mousemove', function(e){
         var r = card.getBoundingClientRect();
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
         card.style.setProperty('--my', (e.clientY - r.top) + 'px');
       });
     });
+
+    // count-up animation for the "by the numbers" stat strip
+    var counted = false;
+    function runCounters(){
+      if(counted) return;
+      var strip = document.querySelector('.stat-strip');
+      if(!strip) return;
+      var rect = strip.getBoundingClientRect();
+      if(rect.top > window.innerHeight * 0.9) return;
+      counted = true;
+      strip.querySelectorAll('b[data-count]').forEach(function(el){
+        var target = parseFloat(el.getAttribute('data-count'));
+        var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var start = performance.now();
+        var dur = 1100;
+        function tick(now){
+          var p = Math.min(1, (now - start) / dur);
+          var eased = 1 - Math.pow(1 - p, 3);
+          var val = target * eased;
+          el.textContent = prefix + val.toFixed(decimals) + suffix;
+          if(p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+    window.addEventListener('scroll', runCounters);
+    window.addEventListener('hashchange', function(){ setTimeout(runCounters, 150); });
+    setTimeout(runCounters, 400);
   })();
 </script>
 
