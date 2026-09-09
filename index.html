@@ -137,6 +137,58 @@
   .scroll-cue .bar::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--amber);animation:scrollbar 1.8s ease-in-out infinite;}
   @keyframes scrollbar{0%{top:-100%;}100%{top:100%;}}
 
+  /* ---------- hero status badge ---------- */
+  .status-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-dim);
+    border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 10px;
+    margin-bottom:20px;background:rgba(79,209,255,.04);
+    opacity:0;transform:translateY(10px);animation:fadeUp .7s ease forwards;animation-play-state:paused;
+  }
+  body.booted .status-badge{animation-play-state:running;}
+  .status-dot{
+    width:7px;height:7px;border-radius:50%;background:#3ddc84;position:relative;flex:none;
+  }
+  .status-dot::after{
+    content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid #3ddc84;
+    animation:statusPulse 1.8s ease-out infinite;
+  }
+  @keyframes statusPulse{0%{transform:scale(.4);opacity:.9;}100%{transform:scale(1.6);opacity:0;}}
+
+  /* ---------- hero CTA row ---------- */
+  .hero-cta-row{
+    display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:34px;
+    opacity:0;transform:translateY(14px);animation:fadeUp .7s ease forwards;animation-play-state:paused;
+  }
+  body.booted .hero-cta-row{animation-play-state:running;}
+  .hero-btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
+    padding:13px 22px;border-radius:2px;transition:transform .25s, border-color .25s, background .25s, box-shadow .25s;
+  }
+  .hero-btn-primary{
+    background:var(--amber);color:#0a0b0d;font-weight:600;
+    box-shadow:0 0 0 0 rgba(245,166,35,.5);
+  }
+  .hero-btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 24px -8px rgba(245,166,35,.55);}
+  .hero-btn-primary .hero-btn-arrow{transition:transform .25s;}
+  .hero-btn-primary:hover .hero-btn-arrow{transform:translateX(4px);}
+  .hero-btn-ghost{
+    border:1px solid var(--line);color:var(--ink);background:transparent;
+  }
+  .hero-btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px);}
+  .hero-social{display:flex;align-items:center;gap:6px;margin-left:2px;}
+  .hero-social a{
+    display:flex;align-items:center;justify-content:center;width:38px;height:38px;
+    border:1px solid var(--line);border-radius:50%;color:var(--ink-dim);
+    transition:color .25s, border-color .25s, transform .25s;
+  }
+  .hero-social a:hover{color:var(--amber);border-color:var(--amber);transform:translateY(-3px);}
+  @media (max-width:640px){
+    .hero-cta-row{gap:12px;}
+    .hero-btn{padding:12px 18px;}
+  }
+
   /* ---------- hero video ---------- */
   .hero-grid{
     display:flex;
@@ -201,6 +253,8 @@
   .hero-text .eyebrow{margin-bottom:14px;}
   .role-line{margin-left:auto;margin-right:auto;}
   .metrics-row{justify-content:center;margin-top:24px;}
+  .hero-cta-row{justify-content:center;}
+  .status-badge{margin-left:auto;margin-right:auto;}
   .scroll-cue{position:relative;left:auto;bottom:auto;margin-top:28px;}
 
   @media(max-width:900px){
@@ -460,6 +514,15 @@
     margin:42px auto 0;
     clear:both;
   }
+  #home .status-badge{
+    position:relative;
+    margin:0 auto 18px;
+  }
+  #home .hero-cta-row{
+    position:relative;
+    justify-content:center;
+    margin:30px auto 0;
+  }
   #home .metric-chip{
     position:relative;
     opacity:1;
@@ -561,7 +624,8 @@
   <div class="hero-grid">
     <div class="hero-text">
       <div class="dev-prompt">aarya@dev<span class="dev-prompt-sep">:~$</span> whoami</div>
-      <div class="eyebrow">AI/ML Engineer — Full-Stack — Deployed Systems</div>
+      <div class="status-badge" style="animation-delay:.02s"><span class="status-dot"></span>Open to AI/ML &amp; SWE internships</div>
+      <div class="eyebrow"><span id="role-cycle">AI/ML Engineer</span></div>
       <h1 class="name">
         <span class="line"><span style="animation-delay:.05s">Aarya</span></span>
         <span class="line"><span style="animation-delay:.18s">Shirsath<span class="accent">.</span></span></span>
@@ -574,6 +638,21 @@
         <div class="metric-chip"><b>0.9998</b>AUC · FraudShield AI</div>
         <div class="metric-chip"><b>6</b>Deployed products</div>
         <a class="metric-chip" href="https://drive.google.com/file/d/1NnsJs3G7Jfk15UCRLbvGYPyOhxbh2yOk/view?usp=sharing" target="_blank"><b>Top 10%</b>TCS CodeVita S13</a>
+      </div>
+      <div class="hero-cta-row" style="animation-delay:.7s">
+        <a class="hero-btn hero-btn-primary" href="#projects"><span>View Projects</span><span class="hero-btn-arrow">→</span></a>
+        <a class="hero-btn hero-btn-ghost" href="Aarya_Shirsath_CV.pdf" target="_blank" rel="noopener noreferrer"><span>Resume</span></a>
+        <div class="hero-social">
+          <a href="https://github.com/Aarya0706/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.26 5.69.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/aarya-shirsath-9b7684340/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          </a>
+          <a href="mailto:arshir07@gmail.com" aria-label="Email" title="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1.4 2 8.6 6.6L20.6 6H3.4Zm17.6 2.3-8.4 6.44a1 1 0 0 1-1.2 0L3 8.3V18h18V8.3Z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -734,7 +813,7 @@
 </section>
 
 <section id="activity">
-  <div class="sec-label">— / Activity</div>
+  <div class="sec-label">05 / Activity</div>
   <h2 class="sec-title reveal">Days I code.</h2>
   <div class="activity-panel reveal">
     <p class="activity-copy">A public commit log from <a href="https://github.com/Aarya0706" target="_blank">github.com/Aarya0706</a> — this is what shipping six deployed products actually looks like, one green square at a time.</p>
@@ -915,7 +994,7 @@
 </section>
 
 <section id="education">
-  <div class="sec-label">05 / Education</div>
+  <div class="sec-label">06 / Education</div>
   <h2 class="sec-title reveal">Grounded in fundamentals.</h2>
   <div class="timeline reveal">
     <div class="t-item">
@@ -947,7 +1026,7 @@
 </section>
 
 <section id="certifications">
-  <div class="sec-label">06 / Certifications</div>
+  <div class="sec-label">07 / Certifications</div>
   <h2 class="sec-title reveal">Credentials worth listing.</h2>
   <div class="cert-grid reveal">
     <div class="cert">
@@ -1005,7 +1084,7 @@
 </section>
 
 <section id="community">
-  <div class="sec-label">07 / Competition</div>
+  <div class="sec-label">08 / Competition</div>
   <h2 class="sec-title reveal">Competitive programming.</h2>
   <div class="cp reveal">
     <div>
@@ -1022,7 +1101,7 @@
 </section>
 
 <section id="contact">
-  <div class="sec-label">08 / Contact</div>
+  <div class="sec-label">09 / Contact</div>
   <h2 class="sec-title reveal">Let's talk.</h2>
   <div class="contact-links reveal">
     <a href="mailto:arshir07@gmail.com">Gmail — arshir07@gmail.com <span class="arrow">↗</span></a>
@@ -1074,6 +1153,27 @@
   }));
   window.addEventListener('hashchange',()=>showPage(location.hash.slice(1),false));
   showPage(location.hash.slice(1),false);
+
+  // hero role typewriter
+  (function(){
+    const el = document.getElementById('role-cycle');
+    if(!el) return;
+    const roles = ['AI/ML Engineer','Full-Stack Developer','Deployed-Systems Builder'];
+    let roleIdx = 0, charIdx = roles[0].length, deleting = false;
+    function tick(){
+      const current = roles[roleIdx];
+      if(!deleting){
+        charIdx++;
+        if(charIdx > current.length){ deleting = true; setTimeout(tick, 1600); return; }
+      } else {
+        charIdx--;
+        if(charIdx < 0){ deleting = false; roleIdx = (roleIdx+1) % roles.length; charIdx = 0; }
+      }
+      el.textContent = roles[roleIdx].slice(0, charIdx);
+      setTimeout(tick, deleting ? 35 : 65);
+    }
+    setTimeout(tick, 900);
+  })();
 
   // scroll reveal
   const io = new IntersectionObserver((entries)=>{
