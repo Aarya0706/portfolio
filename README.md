@@ -64,24 +64,29 @@ An AI-powered healthcare platform combining **multi-agent LLM workflows, determi
 
 ## 🛡️ FraudShield AI
 
-### Real-Time Financial Fraud Detection API
+### Real-Time, Explainable Financial Fraud Detection Platform
 
-A machine-learning-powered fraud detection system combining **XGBoost, FastAPI, feature engineering, real-time inference, and AI-generated risk explanations**.
+A production-style fraud detection platform built with **XGBoost and FastAPI**, combining engineered transaction features, real-time fraud scoring, risk classification, SHAP-based explanations, batch prediction, and runtime monitoring.
 
-**Stack:** `Python` `XGBoost` `FastAPI` `Pydantic` `Scikit-learn` `imbalanced-learn`
+**Stack:** `Python` `XGBoost` `FastAPI` `Pydantic` `Scikit-learn` `Pandas` `NumPy` `SHAP`
 
 ### Highlights
 
-* ⚡ Real-time fraud-scoring REST API
-* 🎯 **0.9997 ROC-AUC** on 6.3M+ PaySim transactions
-* ⚖️ Class imbalance handled via imbalanced-learn
-* 📦 Pydantic-validated request/response schemas
-* 🤖 AI-generated risk explanations
-* 🌐 Deployed full-stack application
+* ⚡ Real-time fraud scoring through a FastAPI REST API
+* 📊 **0.9997 ROC-AUC · 0.9933 PR-AUC · 95%+ precision & recall** on a time-aware PaySim evaluation
+* 🧠 **SHAP explainability** with human-readable top risk factors
+* 🚦 **LOW / MEDIUM / HIGH / CRITICAL** risk classification
+* 📦 Batch prediction with Pydantic-validated request/response schemas
+* 📈 Runtime prediction monitoring, inference latency tracking & model-version hashing
+* 🛡️ Rate limiting, CORS protection, and optional API-key authentication
+* 🌐 Full-stack deployment with **Vercel + Render** and interactive Swagger/OpenAPI documentation
 
-**[💻 Repository](https://github.com/Aarya0706/fraud-detection-api)** · **[🌐 Live Demo](https://fraud-detection-api-eta.vercel.app/)**
+> **Note:** These metrics are benchmark results on the synthetic **PaySim** dataset and should not be interpreted as guaranteed real-world banking performance.
+
+**[💻 Repository](https://github.com/Aarya0706/FraudShield-AI)** · **[🌐 Live Demo](https://fraud-detection-api-eta.vercel.app/)** · **[📚 API Docs](https://fraud-detection-api-w9hz.onrender.com/docs)**
 
 ---
+
 
 ## 🩺 Healthcare Appointment & Follow-up Manager
 
