@@ -37,7 +37,7 @@ A full-stack platform for discovering Indian temples, festivals, and traditions,
 * 🗺️ Key-less Google Maps integration for temple locations
 * 🛂 Gamified "Pilgrimage Passport" with shareable stamp-book export
 
-**[💻 Repository](https://github.com/Aarya0706/temple-heritage)** · **[🌐 Live Demo](https://temple-heritage-fawn.vercel.app/)**
+**[💻 Repository](https://github.com/Aarya0706/temple-heritage)** · **[🌐 Live Demo](https://templeheritage.me/)**
 
 ---
 
