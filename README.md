@@ -180,7 +180,7 @@ A PPO agent built with Stable-Baselines3 that learns to land a spacecraft, with 
 
 🖥️ **Frontend:** Next.js · React · TypeScript
 
-☁️ **Infrastructure & Deployment:** AWS · Docker · Vercel · Railway · Render · Supabase · Git
+☁️ **Infrastructure & Deployment:** AWS · Docker · Vercel · Render · Supabase · Git
 
 🗄️ **Databases:** PostgreSQL · Supabase · MySQL · SQLite · ChromaDB
 
@@ -210,7 +210,7 @@ A PPO agent built with Stable-Baselines3 that learns to land a spacecraft, with 
 
 ### Infrastructure & DevOps
 
-`AWS EC2` `S3` `IAM` `VPC` `Docker` `Vercel` `Railway` `Render` `Git` `GitHub`
+`AWS EC2` `S3` `IAM` `VPC` `Docker` `Vercel` `Render` `Git` `GitHub`
 
 ### Databases
 
