@@ -24,13 +24,13 @@ A developer portfolio showcasing my work across **AI/ML, backend engineering, fu
 
 ### AI-Powered Temple Discovery & Pilgrimage Planning Platform
 
-A full-stack platform for discovering Indian temples, festivals, and traditions, with a **Claude-powered itinerary planner and assistant**, visitor reviews, and gamified pilgrimage tracking.
+A full-stack platform for discovering Indian temples, festivals, and traditions, with a **Groq-powered itinerary planner and assistant**, visitor reviews, and gamified pilgrimage tracking.
 
-**Stack:** `Next.js` `React` `TypeScript` `Supabase` `Claude API`
+**Stack:** `Next.js` `React` `TypeScript` `Supabase` `Groq API`
 
 ### Highlights
 
-* 🤖 Claude-powered AI itinerary planner & in-app assistant
+* 🤖 Groq-powered AI itinerary planner & in-app assistant
 * 🔐 Supabase-backed authentication & persistence
 * ⭐ Visitor reviews with photo uploads & aggregate ratings
 * 🛡️ Admin moderation dashboard
@@ -176,7 +176,7 @@ A PPO agent built with Stable-Baselines3 that learns to land a spacecraft, with 
 
 ⚙️ **Backend:** FastAPI · Node.js · Express · Flask · REST APIs · Pydantic · SQLAlchemy · Prisma
 
-🤖 **AI/ML:** LangChain · Claude API · RAG · Multi-Agent Systems · XGBoost · Scikit-learn
+🤖 **AI/ML:** LangChain · RAG · Multi-Agent Systems · XGBoost · Scikit-learn
 
 🖥️ **Frontend:** Next.js · React · TypeScript
 
@@ -202,7 +202,7 @@ A PPO agent built with Stable-Baselines3 that learns to land a spacecraft, with 
 
 ### AI / ML
 
-`LangChain` `Claude API` `RAG` `Multi-Agent Systems` `Prompt Engineering`
+`LangChain` `RAG` `Multi-Agent Systems` `Prompt Engineering`
 
 `XGBoost` `Scikit-learn` `Pandas` `NumPy`
 
