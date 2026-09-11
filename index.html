@@ -6,7 +6,7 @@
 <title>Aarya Shirsath — AI/ML Engineer</title>
 <meta name="description" content="Aarya Shirsath — AI/ML and full-stack engineer building deployed products end to end, from a Next.js/Groq-powered pilgrimage platform to a 6.3M-row fraud model. B.Tech CSE, VIT Bhopal. Python, FastAPI, AWS.">
 <meta property="og:title" content="Aarya Shirsath — AI/ML Engineer">
-<meta property="og:description" content="AI/ML and full-stack engineer shipping deployed products end to end. Six live products, top 10% TCS CodeVita.">
+<meta property="og:description" content="AI/ML and full-stack engineer shipping deployed products end to end. Seven live products, top 10% TCS CodeVita.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -445,7 +445,7 @@
   }
   #home .eyebrow{
     font-family:var(--mono);
-    color:#d9460b;
+    color:var(--amber);
     font-size:15px;
     letter-spacing:.22em;
     line-height:1.4;
@@ -488,19 +488,19 @@
   }
   #home h1.name .accent{
     display:inline;
-    color:#d9460b;
+    color:var(--amber);
   }
 
   #home .role-line{
     position:relative;
     display:block;
-    max-width:1320px;
-    margin:42px auto 0;
+    max-width:760px;
+    margin:28px auto 0;
     clear:both;
-    color:#f1efec;
+    color:var(--ink-dim);
     font-family:var(--body-ui, 'DM Sans', sans-serif);
-    font-size:clamp(22px,2.15vw,31px);
-    line-height:1.65;
+    font-size:clamp(15px,1.3vw,17px);
+    line-height:1.85;
     opacity:1;
     animation:none;
   }
@@ -529,17 +529,17 @@
     transform:none;
     animation:none;
     min-width:210px;
-    border:1px solid #2a2a2a;
+    border:1px solid var(--line);
     background:transparent;
     border-radius:999px;
     padding:14px 20px;
     font-family:var(--mono);
     font-size:15px;
-    color:#9f9b98;
+    color:var(--ink-dim);
   }
   #home .metric-chip b{
     display:block;
-    color:#d9460b;
+    color:var(--amber);
     font-size:25px;
     line-height:1.1;
     margin-bottom:7px;
@@ -557,7 +557,7 @@
     z-index:2;
     font-family:var(--mono);
     font-size:11px;
-    color:#8d8a87;
+    color:var(--ink-dim);
   }
 
   @media(max-width:720px){
@@ -578,9 +578,9 @@
       font-size:clamp(58px,16vw,84px);
     }
     #home .role-line{
-      font-size:18px;
-      line-height:1.6;
-      margin-top:30px;
+      font-size:15px;
+      line-height:1.8;
+      margin-top:22px;
     }
     #home .metrics-row{
       gap:10px;
@@ -632,11 +632,14 @@
       </h1>
       <p class="role-line" style="animation-delay:.55s">B.Tech CSE @ VIT Bhopal. I build and ship full-stack AI
         systems end to end — from an AI-powered pilgrimage-planning platform to a
-        6.3M-row fraud model — and put them behind a live URL, not just a notebook.</p>
+        6.3M-row fraud model — and put them behind a live URL, not just a notebook.
+        Recent work spans LLM-orchestrated assistants, real-time fraud scoring, and
+        retrieval-augmented pipelines, backed by a habit of solid fundamentals — DSA,
+        databases, and system design.</p>
       <div class="metrics-row">
-        <div class="metric-chip"><b>Groq API</b>Temple Heritage</div>
-        <div class="metric-chip"><b>0.9998</b>AUC · FraudShield AI</div>
-        <div class="metric-chip"><b>6</b>Deployed products</div>
+        <a class="metric-chip" href="https://temple-heritage-fawn.vercel.app/" target="_blank" rel="noopener noreferrer"><b>Groq API</b>Temple Heritage</a>
+        <a class="metric-chip" href="https://fraud-detection-api-eta.vercel.app/" target="_blank" rel="noopener noreferrer"><b>0.9998</b>AUC · FraudShield AI</a>
+        <a class="metric-chip" href="#projects"><b>7</b>Deployed products</a>
         <a class="metric-chip" href="https://drive.google.com/file/d/1NnsJs3G7Jfk15UCRLbvGYPyOhxbh2yOk/view?usp=sharing" target="_blank"><b>Top 10%</b>TCS CodeVita S13</a>
       </div>
       <div class="hero-cta-row" style="animation-delay:.7s">
@@ -673,7 +676,7 @@
   <h2 class="sec-title reveal">I design, build, and ship production software — not just notebooks.</h2>
   <div class="about-layout">
     <div class="about-copy reveal">
-      <p class="about-short">I build practical software at the intersection of AI/ML, backend engineering, and full-stack development — with six deployed products carrying live URLs and public code, not just local demos.</p>
+      <p class="about-short">I build practical software at the intersection of AI/ML, backend engineering, and full-stack development — with seven deployed products carrying live URLs and public code, not just local demos.</p>
       <p class="about-long">My work spans the full lifecycle: data modeling, API design, authentication, ML pipelines, and deployment. Recent builds include an AI-powered pilgrimage-planning platform pairing a Groq-driven itinerary planner with Supabase-backed auth, visitor reviews, and admin moderation; a fraud-detection service scoring transactions at 0.9997 AUC on 6.3M PaySim records; a multi-agent clinical decision-support platform combining triage and drug-interaction checks; and a full-stack healthcare appointment manager with LLM-generated pre- and post-visit summaries, email notifications, and Google Calendar sync. Alongside product work, I keep a deliberate practice of fundamentals — DSA in Java, operating systems, databases, and system design — reflected in a top-10% global finish at TCS CodeVita Season 13.</p>
       <div class="tag-row">
         <span class="tag">AI / ML</span>
@@ -711,7 +714,7 @@
       <div class="row"><span>Degree</span><b>B.Tech, CSE '27</b></div>
       <div class="row"><span>University</span><b>VIT Bhopal</b></div>
       <div class="row"><span>Focus</span><b>AI / ML · Full-Stack</b></div>
-      <div class="row"><span>Live products</span><b>6 deployed, public URLs</b></div>
+      <div class="row"><span>Live products</span><b>7 deployed, public URLs</b></div>
       <div class="row"><span>Status</span><b>Open to SDE-1 / new-grad</b></div>
     </div>
   </div>
@@ -815,7 +818,7 @@
   <div class="sec-label">05 / Activity</div>
   <h2 class="sec-title reveal">Days I code.</h2>
   <div class="activity-panel reveal">
-    <p class="activity-copy">A public commit log from <a href="https://github.com/Aarya0706" target="_blank">github.com/Aarya0706</a> — this is what shipping six deployed products actually looks like, one green square at a time.</p>
+    <p class="activity-copy">A public commit log from <a href="https://github.com/Aarya0706" target="_blank">github.com/Aarya0706</a> — this is what shipping seven deployed products actually looks like, one green square at a time.</p>
     <div class="contrib-card">
       <div class="contrib-scroll">
         <img class="contrib-graph" src="https://ghchart.rshah.org/e84a0b/Aarya0706" alt="Aarya Shirsath's GitHub contribution graph" loading="lazy" onerror="statsImgError(this)">
