@@ -732,7 +732,7 @@
     <div class="icon-tile"><img src="https://cdn.simpleicons.org/postgresql/f2f0ed" alt="PostgreSQL" loading="lazy"><span>PostgreSQL</span></div>
     <div class="icon-tile"><img src="https://cdn.simpleicons.org/supabase/f2f0ed" alt="Supabase" loading="lazy"><span>Supabase</span></div>
     <div class="icon-tile"><img src="https://cdn.simpleicons.org/docker/f2f0ed" alt="Docker" loading="lazy"><span>Docker</span></div>
-    <div class="icon-tile"><img src="https://cdn.simpleicons.org/amazonaws/f2f0ed" alt="AWS" loading="lazy"><span>AWS</span></div>
+    <div class="icon-tile"><img src="https://cdn.simpleicons.org/amazonaws" alt="AWS" loading="lazy" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg';"><span>AWS</span></div>
     <div class="icon-tile"><img src="https://cdn.simpleicons.org/git/f2f0ed" alt="Git" loading="lazy"><span>Git</span></div>
     <div class="icon-tile"><img src="https://cdn.simpleicons.org/tensorflow/f2f0ed" alt="TensorFlow" loading="lazy"><span>TensorFlow</span></div>
     <div class="icon-tile"><img src="https://cdn.simpleicons.org/langchain/f2f0ed" alt="LangChain" loading="lazy"><span>LangChain</span></div>
@@ -819,21 +819,21 @@
     <p class="activity-copy">A public commit log from <a href="https://github.com/Aarya0706" target="_blank">github.com/Aarya0706</a> — this is what shipping six deployed products actually looks like, one green square at a time.</p>
     <div class="contrib-card">
       <div class="contrib-scroll">
-        <img class="contrib-graph" src="https://ghchart.rshah.org/e84a0b/Aarya0706" alt="Aarya Shirsath's GitHub contribution graph" loading="lazy">
+        <img class="contrib-graph" src="https://ghchart.rshah.org/e84a0b/Aarya0706" alt="Aarya Shirsath's GitHub contribution graph" loading="lazy" onerror="statsImgError(this)">
       </div>
       <a class="proj-link contrib-link" href="https://github.com/Aarya0706" target="_blank">View GitHub profile →</a>
     </div>
     <div class="stats-row">
       <div class="stats-card">
-        <img src="https://github-readme-stats.vercel.app/api?username=Aarya0706&show_icons=true&hide=stars,issues&hide_border=true&bg_color=00000000&title_color=f5a623&text_color=eceeec&icon_color=4fd1ff&rank_icon=percentile" alt="Aarya Shirsath's GitHub stats" loading="lazy">
+        <img src="https://github-readme-stats.vercel.app/api?username=Aarya0706&show_icons=true&hide=stars,issues&hide_border=true&bg_color=00000000&title_color=f5a623&text_color=eceeec&icon_color=4fd1ff&rank_icon=percentile" alt="Aarya Shirsath's GitHub stats" loading="lazy" onerror="statsImgError(this)">
       </div>
       <div class="stats-card">
-        <img src="https://streak-stats.demolab.com/?user=Aarya0706&hide_border=true&background=00000000&ring=f5a623&fire=f5a623&currStreakLabel=f5a623&sideNums=eceeec&currStreakNum=eceeec&sideLabels=9aa0a6&dates=9aa0a6&card_width=280" alt="Aarya Shirsath's GitHub streak stats" loading="lazy">
+        <img src="https://streak-stats.demolab.com/?user=Aarya0706&hide_border=true&background=00000000&ring=f5a623&fire=f5a623&currStreakLabel=f5a623&sideNums=eceeec&currStreakNum=eceeec&sideLabels=9aa0a6&dates=9aa0a6&card_width=280" alt="Aarya Shirsath's GitHub streak stats" loading="lazy" onerror="statsImgError(this)">
       </div>
     </div>
     <div class="lang-card">
       <div class="lang-card-label">Language breakdown</div>
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Aarya0706&layout=compact&hide_border=true&bg_color=00000000&title_color=f5a623&text_color=eceeec&langs_count=8" alt="Aarya Shirsath's most-used languages" loading="lazy">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Aarya0706&layout=compact&hide_border=true&bg_color=00000000&title_color=f5a623&text_color=eceeec&langs_count=8" alt="Aarya Shirsath's most-used languages" loading="lazy" onerror="statsImgError(this)">
     </div>
   </div>
 </section>
@@ -2268,6 +2268,25 @@
     setTimeout(runCounters, 400);
   })();
 </script>
+
+<script>
+  // Graceful fallback for third-party GitHub stats/streak images that
+  // intermittently fail (rate-limited free services). Hides the broken
+  // image and swaps in a small text link instead of a broken-image icon.
+  function statsImgError(img) {
+    if (img.dataset.fallbackApplied) return;
+    img.dataset.fallbackApplied = "true";
+    img.style.display = "none";
+    var fallback = document.createElement("p");
+    fallback.className = "stats-fallback";
+    fallback.innerHTML = "Live stats unavailable right now — <a href=\"https://github.com/Aarya0706\" target=\"_blank\">view on GitHub</a>";
+    img.insertAdjacentElement("afterend", fallback);
+  }
+</script>
+<style>
+  .stats-fallback{opacity:.65;font-size:.85rem;padding:1rem 0;text-align:center;}
+  .stats-fallback a{color:#f5a623;text-decoration:underline;}
+</style>
 
 </body>
 </html>
