@@ -6,7 +6,7 @@
 <title>Aarya Shirsath — AI/ML Engineer</title>
 <meta name="description" content="Aarya Shirsath — AI/ML and full-stack engineer building deployed products end to end, from a Next.js/Groq-powered pilgrimage platform to a 6.3M-row fraud model. B.Tech CSE, VIT Bhopal. Python, FastAPI, AWS.">
 <meta property="og:title" content="Aarya Shirsath — AI/ML Engineer">
-<meta property="og:description" content="AI/ML and full-stack engineer shipping deployed products end to end. Seven live products, top 10% TCS CodeVita.">
+<meta property="og:description" content="AI/ML and full-stack engineer shipping deployed products end to end. Eight live products, top 10% TCS CodeVita.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -307,9 +307,17 @@
   .proj-num{font-family:var(--mono);color:var(--ink-dim);font-size:13px;padding-top:6px;}
   .proj-title{font-family:var(--sans);font-weight:600;font-size:clamp(22px,3vw,30px);margin-bottom:10px;}
   .proj-title:hover{color:var(--amber);}
-  .proj-desc{color:var(--ink-dim);font-size:14.5px;line-height:1.7;max-width:62ch;margin-bottom:14px;}
+  .proj-tagline{font-family:var(--body-ui,var(--sans));font-weight:600;font-size:16.5px;color:var(--ink);line-height:1.5;margin-bottom:12px;}
+  .proj-desc{color:var(--ink-dim);font-size:14.5px;line-height:1.7;max-width:62ch;margin-bottom:18px;}
+  .proj-group{margin-bottom:15px;}
+  .proj-group:last-of-type{margin-bottom:0;}
+  .proj-group-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:9px;}
   .proj-meta{display:flex;flex-wrap:wrap;gap:9px;}
   .proj-meta span{font-family:var(--mono);font-size:11px;color:var(--cyan);border:1px solid rgba(79,209,255,.25);padding:5px 10px;border-radius:99px;}
+  .proj-eng{display:flex;flex-wrap:wrap;gap:9px;}
+  .proj-eng span{font-family:var(--mono);font-size:11px;color:var(--ink-dim);border:1px solid var(--line);padding:5px 10px;border-radius:99px;}
+  .proj-metrics{display:flex;flex-wrap:wrap;gap:9px;}
+  .proj-metrics span{font-family:var(--mono);font-size:11.5px;color:var(--ink);border:1px solid var(--line);background:var(--bg-raised);padding:6px 12px;border-radius:10px;font-weight:500;}
   .proj-links{display:flex;flex-direction:column;align-items:flex-end;gap:10px;padding-top:8px;}
   .proj-link{font-family:var(--mono);font-size:12px;color:var(--ink-dim);white-space:nowrap;}
   .proj-link:hover{color:var(--amber);}
@@ -879,69 +887,102 @@
       <div class="proj-num">01 <span class="featured-label">FEATURED PROJECT</span></div>
       <div>
         <div class="proj-title">Temple Heritage</div>
-        <div class="proj-desc">AI-powered temple discovery and pilgrimage
-          planning platform covering Indian temples, festivals, and traditions.
-          Groq-powered itinerary planner and assistant, Supabase-backed auth,
-          visitor reviews with photo uploads, an admin moderation dashboard,
-          and a gamified "Pilgrimage Passport" with shareable stamp-book export.</div>
-        <div class="proj-meta">
-          <span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Groq API</span>
+        <div class="proj-tagline">AI-assisted pilgrimage planning for India's temples — from discovery to a shareable digital passport.</div>
+        <div class="proj-desc">Full-stack platform for exploring Indian temples and festivals, with a Groq-powered
+          itinerary planner, gamified pilgrimage passport, and an admin dashboard for review moderation.
+          Every AI response is validated and normalized before it reaches a user.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Groq API</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>Auth &amp; RLS</span><span>API Routes</span><span>AI Validation</span><span>Rate Limiting</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>21 temples · 14 festivals</span><span>12 automated test suites</span><span>Live on custom domain</span></div>
         </div>
       </div>
       <div class="proj-links">
         <a class="proj-link" href="https://github.com/Aarya0706/temple-heritage" target="_blank">GitHub →</a>
         <a class="proj-link" href="https://templeheritage.me/" target="_blank">Live Demo →</a>
+        <a class="proj-link" href="case-studies/temple-heritage.html">Case Study →</a>
       </div>
     </div>
     <div class="proj">
       <div class="proj-num">02</div>
       <div>
         <div class="proj-title">MediAgent AI</div>
-        <div class="proj-desc">Multi-agent clinical decision-support platform: AI
-          triage, emergency detection, and automatic department routing via
-          LangChain agents on Groq Llama. Live OpenFDA drug-interaction checks,
-          lab-report OCR via pdfplumber + Tesseract, AI-generated PDF consult
-          reports, and a Plotly analytics dashboard over an SQLAlchemy-backed store.</div>
-        <div class="proj-meta">
-          <span>LangChain</span><span>Groq</span><span>Streamlit</span><span>SQLAlchemy</span><span>OpenFDA</span>
+        <div class="proj-tagline">Multi-agent clinical decision support that triages patients before they see a doctor.</div>
+        <div class="proj-desc">Agentic healthcare platform combining an Intake → Triage → Recommendation agent
+          pipeline with live OpenFDA drug-interaction checks and voice-assisted symptom entry. Every AI
+          assessment ships with an urgency score, a confidence score, and explainable reasoning.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>LangChain</span><span>Groq</span><span>Streamlit</span><span>SQLAlchemy</span><span>OpenFDA</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>Multi-Agent Pipeline</span><span>RBAC</span><span>OCR</span><span>RAG Chat</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>Routes across 13 departments</span><span>Live OpenFDA lookups</span><span>Voice intake via Whisper</span></div>
         </div>
       </div>
       <div class="proj-links">
         <a class="proj-link" href="https://github.com/Aarya0706/mediagent-ai" target="_blank">GitHub →</a>
         <a class="proj-link" href="https://mediagent-ai.streamlit.app/" target="_blank">Live Demo →</a>
+        <a class="proj-link" href="case-studies/mediagent-ai.html">Case Study →</a>
       </div>
     </div>
     <div class="proj">
       <div class="proj-num">03</div>
       <div>
         <div class="proj-title">FraudShield AI</div>
-        <div class="proj-desc">XGBoost fraud detection model trained on 6.3M
-          PaySim transactions, hitting a 0.9997 AUC, with class imbalance
-          handled via imbalanced-learn. Deployed as a live FastAPI + Uvicorn
-          API with Pydantic-validated schemas, plus a separate frontend for
-          real-time inference.</div>
-        <div class="proj-meta">
-          <span>XGBoost</span><span>Python</span><span>Pydantic</span><span>Render</span><span>Vercel</span>
+        <div class="proj-tagline">Real-time fraud scoring that turns a 6.86M-transaction dataset into a single API call.</div>
+        <div class="proj-desc">XGBoost fraud-detection model trained on the full PaySim dataset, deployed as a
+          FastAPI service with Pydantic-validated schemas and AI-generated risk explanations for every
+          flagged transaction. Class imbalance is handled with imbalanced-learn, not naive resampling.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>XGBoost</span><span>Python</span><span>Pydantic</span><span>Render</span><span>Vercel</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>Feature Engineering</span><span>Class Imbalance</span><span>Model Versioning</span><span>SHAP Explanations</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>0.9997 ROC-AUC</span><span>95.4% precision / 95.7% recall</span><span>6.86M rows scored</span></div>
         </div>
       </div>
       <div class="proj-links">
         <a class="proj-link" href="https://github.com/Aarya0706/fraud-detection-api" target="_blank">GitHub →</a>
         <a class="proj-link" href="https://fraud-detection-api-eta.vercel.app/" target="_blank">Live Demo →</a>
+        <a class="proj-link" href="case-studies/fraudshield-ai.html">Case Study →</a>
       </div>
     </div>
     <div class="proj">
       <div class="proj-num">04</div>
       <div>
         <div class="proj-title">Ledger — Nifty Research Assistant</div>
-        <div class="proj-desc">AI trading-research prototype that turns a
-          plain-English question into a structured, testable experiment and
-          runs it end to end: Ask → Clarify → Define → Test → Learn. Gemini
-          extracts the experiment and flags every field as confirmed or
-          assumed, a deterministic engine backtests it on a seeded synthetic
-          price series, and a second AI call explains the result — separating
-          what the data shows from what it means, without inventing numbers.</div>
-        <div class="proj-meta">
-          <span>Next.js</span><span>TypeScript</span><span>Gemini API</span><span>Zod</span><span>Tailwind</span>
+        <div class="proj-tagline">Turns a plain-English trading question into a structured, backtested experiment.</div>
+        <div class="proj-desc">Research prototype that extracts a testable trading experiment from natural
+          language, flags every assumed field before running it, and backtests it against a seeded synthetic
+          price series. A second AI call explains the result without inventing numbers.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>Next.js</span><span>TypeScript</span><span>Gemini API</span><span>Zod</span><span>Tailwind</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>Structured Extraction</span><span>Schema Validation</span><span>Deterministic Backtesting</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>2 narrowly-scoped AI calls</span><span>Zod-validated at every AI boundary</span></div>
         </div>
       </div>
       <div class="proj-links">
@@ -953,34 +994,47 @@
       <div class="proj-num">05</div>
       <div>
         <div class="proj-title">EduGrade-AI</div>
-        <div class="proj-desc">Virtual-classroom platform automating grading —
-          join-code classes, role-based access, Google Document AI OCR, and
-          two-layer plagiarism detection (sequence/cosine/trigram similarity)
-          escalating to handwriting comparison. Gemini-based grading with
-          in-place PDF annotation, on a normalized SQLAlchemy schema with
-          per-row caching of AI artifacts.</div>
-        <div class="proj-meta">
-          <span>Document AI</span><span>Gemini</span><span>SQLAlchemy</span><span>Render</span>
+        <div class="proj-tagline">Automates assignment grading with a two-layer plagiarism check built in.</div>
+        <div class="proj-desc">Virtual-classroom platform combining Google Document AI OCR with Gemini-based
+          grading and in-place PDF annotation. Two-layer plagiarism detection escalates to handwriting
+          comparison, running on a normalized schema with per-row caching of AI outputs.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>Document AI</span><span>Gemini</span><span>SQLAlchemy</span><span>Render</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>OCR Pipeline</span><span>Plagiarism Detection</span><span>RBAC</span><span>AI-Output Caching</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>2-layer similarity check</span><span>Escalates to handwriting compare</span></div>
         </div>
       </div>
       <div class="proj-links">
         <a class="proj-link" href="https://github.com/Aarya0706/EduGrade-AI" target="_blank">GitHub →</a>
         <a class="proj-link" href="https://edugrade-ai-d757.onrender.com/" target="_blank">Live Demo →</a>
       </div>
-    
-    
     </div>
     <div class="proj">
       <div class="proj-num">06</div>
       <div>
         <div class="proj-title">Document Q&A — RAG Chatbot</div>
-        <div class="proj-desc">Retrieval-augmented chat over your own PDFs, built
-          with LangChain, Gemini embeddings, and ChromaDB. Every answer cites
-          its source document, page, and similarity score — strictly grounded,
-          so it says "not in the docs" instead of guessing. Rate-limit-aware
-          batched ingestion keeps it inside free-tier API quotas.</div>
-        <div class="proj-meta">
-          <span>LangChain</span><span>Gemini</span><span>ChromaDB</span><span>Render</span>
+        <div class="proj-tagline">Answers only from your own PDFs — and says so when it can't.</div>
+        <div class="proj-desc">Retrieval-augmented chatbot built with LangChain, Gemini embeddings, and
+          ChromaDB. Every answer cites its source document, page, and similarity score, and the system
+          explicitly declines to answer when the retrieved context doesn't support one.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>LangChain</span><span>Gemini</span><span>ChromaDB</span><span>Render</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>RAG Pipeline</span><span>Source Grounding</span><span>Rate-Limit-Aware Ingestion</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>Every answer cited: doc + page + score</span><span>Stays inside free-tier quotas</span></div>
         </div>
       </div>
       <div class="proj-links">
@@ -992,13 +1046,21 @@
       <div class="proj-num">07</div>
       <div>
         <div class="proj-title">Autonomous Lunar Landing — PPO</div>
-        <div class="proj-desc">Deep RL agent that lands a spacecraft in Gymnasium's
-          LunarLander-v3 using PPO (Stable-Baselines3). A custom callback tracks
-          landing success rate — safe, crash, or timeout — not just mean reward,
-          with TensorBoard curves and 50k-step checkpointing. A deterministic
-          evaluation harness reports the full outcome breakdown across N episodes.</div>
-        <div class="proj-meta">
-          <span>Stable-Baselines3</span><span>Gymnasium</span><span>PyTorch</span><span>TensorBoard</span>
+        <div class="proj-tagline">A reinforcement-learning agent judged on landings, not just reward.</div>
+        <div class="proj-desc">PPO agent trained on Gymnasium's LunarLander-v3 with Stable-Baselines3, using a
+          custom callback that tracks safe landings, crashes, and timeouts separately rather than relying on
+          mean reward alone. Includes 50k-step checkpointing and a deterministic evaluation harness.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>Stable-Baselines3</span><span>Gymnasium</span><span>PyTorch</span><span>TensorBoard</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>Custom Callbacks</span><span>Checkpointing</span><span>Evaluation Harness</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>Outcome breakdown: safe / crash / timeout</span><span>50k-step checkpoints</span></div>
         </div>
       </div>
       <div class="proj-links">
@@ -1009,14 +1071,21 @@
       <div class="proj-num">08</div>
       <div>
         <div class="proj-title">Healthcare Appointment &amp; Follow-up Manager</div>
-        <div class="proj-desc">Full-stack clinic platform with separate patient,
-          doctor, and admin portals. Patients describe symptoms pre-visit and an
-          LLM drafts an urgency-flagged summary for the doctor; post-visit notes
-          are turned into a patient-friendly summary and medication schedule.
-          Email confirmations, Google Calendar sync, and automated medication
-          reminders round it out.</div>
-        <div class="proj-meta">
-          <span>Node.js</span><span>PostgreSQL</span><span>Prisma</span><span>Gemini</span>
+        <div class="proj-tagline">One platform, three portals — patient, doctor, and admin, kept in sync by an LLM.</div>
+        <div class="proj-desc">Full-stack clinic platform where an LLM drafts urgency-flagged pre-visit
+          summaries and patient-friendly post-visit notes. Automated email confirmations, Google Calendar
+          sync via OAuth 2.0, and medication reminders round out the patient side.</div>
+        <div class="proj-group">
+          <div class="proj-group-label">Stack</div>
+          <div class="proj-meta"><span>Node.js</span><span>PostgreSQL</span><span>Prisma</span><span>Gemini</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Engineering</div>
+          <div class="proj-eng"><span>OAuth 2.0</span><span>Email Automation</span><span>Scheduled Reminders</span></div>
+        </div>
+        <div class="proj-group">
+          <div class="proj-group-label">Metrics</div>
+          <div class="proj-metrics"><span>LLM summary on both sides of every visit</span><span>Automated Calendar sync</span></div>
         </div>
       </div>
       <div class="proj-links">
