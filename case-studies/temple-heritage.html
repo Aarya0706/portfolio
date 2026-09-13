@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temple Heritage — Case Study | Aarya Shirsath</title>
+<meta name="description" content="Case study: a full-stack Next.js + Supabase platform for discovering Indian temples and planning AI-assisted pilgrimages, with a Groq-powered itinerary planner and gamified passport system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#090909;
+    --bg-raised:#111111;
+    --line:#292929;
+    --ink:#f2f0ed;
+    --ink-dim:#aaa7a4;
+    --amber:#e84a0b;
+    --display:'Cormorant Garamond', Georgia, serif;
+    --body-ui:'DM Sans', Arial, sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body-ui);overflow-x:hidden;}
+  ::selection{background:var(--amber);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:26px 6vw;background:linear-gradient(to bottom,rgba(9,9,9,.94),transparent);
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(6px);
+  }
+  .site-logo{font-family:var(--display);font-style:italic;font-weight:500;font-size:28px;color:var(--ink);}
+  .back-link{
+    font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);
+    display:inline-flex;align-items:center;gap:8px;transition:color .2s ease;
+  }
+  .back-link:hover{color:var(--amber);}
+
+  main{max-width:900px;margin:0 auto;padding:0 6vw 100px;}
+
+  .cs-hero{padding:56px 0 48px;border-bottom:1px solid var(--line);}
+  .cs-eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;}
+  .cs-title{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(42px,7vw,72px);line-height:.98;letter-spacing:-.02em;margin-bottom:20px;}
+  .cs-tagline{font-family:var(--body-ui);font-weight:600;font-size:19px;color:var(--ink);line-height:1.5;max-width:62ch;margin-bottom:28px;}
+  .cs-links{display:flex;flex-wrap:wrap;gap:14px;}
+  .cs-btn{
+    font-family:var(--body-ui);font-weight:600;font-size:14.5px;color:#fff;
+    background:var(--amber);border:1px solid var(--amber);border-radius:999px;
+    padding:11px 22px;transition:transform .2s ease, filter .2s ease;display:inline-block;
+  }
+  .cs-btn:hover{transform:scale(1.035);filter:brightness(1.08);}
+  .cs-btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .cs-btn.ghost:hover{border-color:var(--amber);color:var(--amber);filter:none;transform:translateY(-2px);}
+
+  section.cs-sec{padding:52px 0;border-bottom:1px solid var(--line);}
+  section.cs-sec:last-of-type{border-bottom:0;}
+  .cs-sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;}
+  .cs-sec-label::before{content:"§ ";color:var(--ink-dim);}
+  .cs-sec h2{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.05;margin-bottom:22px;max-width:26ch;}
+  .cs-sec p{font-family:var(--body-ui);color:#ccc7c2;font-size:16.5px;line-height:1.75;max-width:70ch;margin-bottom:16px;}
+  .cs-sec p:last-child{margin-bottom:0;}
+
+  .cs-decision{border-top:1px solid var(--line);padding:22px 0;}
+  .cs-decision:first-of-type{border-top:0;padding-top:0;}
+  .cs-decision h3{font-family:var(--body-ui);font-weight:700;font-size:16.5px;color:var(--ink);margin-bottom:8px;}
+  .cs-decision p{color:#ccc7c2;font-size:15.5px;line-height:1.7;max-width:68ch;margin:0;}
+
+  /* architecture diagram */
+  .cs-diagram{
+    display:flex;align-items:stretch;gap:0;flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .cs-node{
+    flex:1 1 150px;min-width:130px;
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:16px;
+    padding:20px 16px;text-align:center;
+  }
+  .cs-node-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px;}
+  .cs-node-name{font-family:var(--body-ui);font-weight:700;font-size:15px;color:var(--ink);line-height:1.3;}
+  .cs-arrow{
+    display:flex;align-items:center;justify-content:center;
+    color:var(--amber);font-family:var(--mono);font-size:20px;padding:0 8px;flex:0 0 auto;
+  }
+  @media(max-width:720px){
+    .cs-diagram{flex-direction:column;}
+    .cs-arrow{transform:rotate(90deg);padding:6px 0;}
+  }
+
+  .cs-metrics-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;}
+  .cs-metric{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;min-width:160px;flex:1 1 200px;
+  }
+  .cs-metric b{display:block;font-family:var(--display);font-style:italic;font-weight:600;font-size:26px;color:var(--amber);margin-bottom:4px;line-height:1.1;}
+  .cs-metric span{font-family:var(--mono);font-size:11.5px;color:var(--ink-dim);}
+
+  footer{padding:34px 6vw;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--ink-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer a:hover{color:var(--amber);}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="site-logo" href="../index.html">aarya</a>
+  <a class="back-link" href="../index.html#projects"><span>←</span> Back to Portfolio</a>
+</header>
+
+<main>
+  <section class="cs-hero">
+    <div class="cs-eyebrow">Case Study</div>
+    <h1 class="cs-title">Temple Heritage</h1>
+    <p class="cs-tagline">AI-assisted pilgrimage planning for India's temples — from discovery to a shareable digital passport.</p>
+    <div class="cs-links">
+      <a class="cs-btn" href="https://github.com/Aarya0706/temple-heritage" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      <a class="cs-btn ghost" href="https://templeheritage.me/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Problem</div>
+    <h2>Pilgrimage planning is scattered across a dozen sources.</h2>
+    <p>Planning a multi-temple pilgrimage in India means piecing together temple history, festival calendars, and travel logistics from scattered sources, with no single place to discover a temple, plan a trip around it, and keep a record of what's already been visited.</p>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Solution</div>
+    <h2>One platform for discovery, planning, and remembering.</h2>
+    <p>A full-stack discovery and planning platform covering 21 temples and 14 festivals, with a Groq-powered itinerary planner that turns a city, day count, and interest list into a validated, exportable day-by-day plan. A gamified &ldquo;Pilgrimage Passport&rdquo; then tracks completed yatras over time, with region badges and a shareable stamp-book export.</p>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Architecture</div>
+    <div class="cs-diagram">
+      <div class="cs-node"><div class="cs-node-label">Frontend</div><div class="cs-node-name">Next.js + React (App Router)</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">Backend</div><div class="cs-node-name">Next.js API Routes</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">AI / ML</div><div class="cs-node-name">Groq SDK — itinerary planner &amp; assistant</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">Database</div><div class="cs-node-name">Supabase (Postgres, Auth, Storage)</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">Deployment</div><div class="cs-node-name">Vercel — custom domain</div></div>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Technical Decisions</div>
+    <div class="cs-decision"><h3>Supabase over a custom auth/DB stack</h3><p>Postgres, authentication, and file storage came from one provider, with Row-Level Security enforced at the database layer — so review moderation and admin-only stats can't be bypassed by a compromised client, only by the database policy itself.</p></div><div class="cs-decision"><h3>Groq over a larger hosted model</h3><p>Itinerary generation needed to feel interactive, and the output is structured JSON rather than open-ended prose — speed mattered more than raw model capability here.</p></div><div class="cs-decision"><h3>Validation and normalization as a dedicated pipeline stage</h3><p>AI responses are parsed, validated, and normalized before they ever reach the UI or get saved, with fallback handling if the model returns something malformed — the AI's output is never trusted directly.</p></div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Challenges</div>
+    <div class="cs-decision"><h3>Handling imperfect AI output safely</h3><p>The itinerary planner needed defined fallback behavior, rate limiting, and error handling for the cases where Groq returns output that doesn't match the expected schema, rather than assuming every response is well-formed.</p></div><div class="cs-decision"><h3>Data model gaps discovered mid-build</h3><p>Extending the passport feature surfaced missing columns (username, avatar, share tokens) and a mismatch between reviews/check-ins keying on temple slug versus temple ID, which needed schema migrations rather than pure UI work.</p></div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Implementation</div>
+    <h2>Tested where it matters, not just where it's easy.</h2>
+    <p>Twelve automated Vitest test suites cover the recommender, zodiac/horoscope matching, rate limiting, admin stats, and the AI pipeline itself — not just UI smoke tests. The admin dashboard layers a stats bar (registered users, saved temples, yatra plans) above RLS-protected review moderation, so platform health and moderation live in the same view.</p>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Results</div>
+    <div class="cs-metrics-row">
+      <div class="cs-metric"><b>21</b><span>Temples across 5 regions</span></div><div class="cs-metric"><b>14</b><span>Festivals tied to temples</span></div><div class="cs-metric"><b>12</b><span>Automated Vitest suites</span></div><div class="cs-metric"><b>Live</b><span>On a custom domain</span></div>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Links</div>
+    <div class="cs-links">
+      <a class="cs-btn" href="https://github.com/Aarya0706/temple-heritage" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      <a class="cs-btn ghost" href="https://templeheritage.me/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Aarya Shirsath — Temple Heritage</span>
+  <a href="../index.html">← Back to Portfolio</a>
+</footer>
+
+</body>
+</html>
