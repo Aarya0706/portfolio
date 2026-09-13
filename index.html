@@ -833,6 +833,18 @@
       </ul>
     </div>
   </div>
+  <div class="lang-card applied-card reveal">
+    <div class="lang-card-label">Applied in</div>
+    <div class="applied-list">
+      <div class="applied-row"><span class="applied-skill">LLM Applications</span><span class="applied-arrow">→</span><span class="applied-proj">Temple Heritage · MediAgent</span></div>
+      <div class="applied-row"><span class="applied-skill">RAG Systems</span><span class="applied-arrow">→</span><span class="applied-proj">RAG Chatbot</span></div>
+      <div class="applied-row"><span class="applied-skill">Multi-Agent Systems</span><span class="applied-arrow">→</span><span class="applied-proj">MediAgent</span></div>
+      <div class="applied-row"><span class="applied-skill">AI Workflow Automation</span><span class="applied-arrow">→</span><span class="applied-proj">MediAgent · EduGrade</span></div>
+      <div class="applied-row"><span class="applied-skill">Explainable ML</span><span class="applied-arrow">→</span><span class="applied-proj">FraudShield</span></div>
+      <div class="applied-row"><span class="applied-skill">Classical ML</span><span class="applied-arrow">→</span><span class="applied-proj">FraudShield</span></div>
+      <div class="applied-row"><span class="applied-skill">Reinforcement Learning</span><span class="applied-arrow">→</span><span class="applied-proj">Lunar Landing</span></div>
+    </div>
+  </div>
 </section>
 
 <section id="activity">
@@ -2292,6 +2304,14 @@
   .lang-card img{display:block;max-width:400px;width:100%;}
   .activity-stat-strip{margin-top:0;padding-top:0;border-top:none;grid-template-columns:repeat(4, 1fr);}
   @media(max-width:640px){.activity-stat-strip{grid-template-columns:repeat(2, 1fr);}}
+  .applied-card{margin-top:36px;}
+  .applied-list{display:flex;flex-direction:column;gap:2px;}
+  .applied-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);}
+  .applied-row:last-child{border-bottom:none;}
+  .applied-skill{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink);border:1px solid var(--line);background:var(--bg);padding:6px 12px;border-radius:10px;}
+  .applied-arrow{color:var(--amber);font-size:14px;line-height:1;}
+  .applied-proj{font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);}
+  @media(max-width:480px){.applied-row{gap:6px;} .applied-skill{font-size:11.5px;padding:5px 10px;}}
 
   /* ---------- staggered card entrance ---------- */
   .stack-groups.reveal .stack-group,
