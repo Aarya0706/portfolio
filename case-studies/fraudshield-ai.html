@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FraudShield AI — Case Study | Aarya Shirsath</title>
+<meta name="description" content="Case study: an XGBoost fraud-detection model trained on 6.86M PaySim transactions, deployed as a real-time FastAPI service with AI-generated risk explanations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#090909;
+    --bg-raised:#111111;
+    --line:#292929;
+    --ink:#f2f0ed;
+    --ink-dim:#aaa7a4;
+    --amber:#e84a0b;
+    --display:'Cormorant Garamond', Georgia, serif;
+    --body-ui:'DM Sans', Arial, sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body-ui);overflow-x:hidden;}
+  ::selection{background:var(--amber);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:26px 6vw;background:linear-gradient(to bottom,rgba(9,9,9,.94),transparent);
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(6px);
+  }
+  .site-logo{font-family:var(--display);font-style:italic;font-weight:500;font-size:28px;color:var(--ink);}
+  .back-link{
+    font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);
+    display:inline-flex;align-items:center;gap:8px;transition:color .2s ease;
+  }
+  .back-link:hover{color:var(--amber);}
+
+  main{max-width:900px;margin:0 auto;padding:0 6vw 100px;}
+
+  .cs-hero{padding:56px 0 48px;border-bottom:1px solid var(--line);}
+  .cs-eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;}
+  .cs-title{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(42px,7vw,72px);line-height:.98;letter-spacing:-.02em;margin-bottom:20px;}
+  .cs-tagline{font-family:var(--body-ui);font-weight:600;font-size:19px;color:var(--ink);line-height:1.5;max-width:62ch;margin-bottom:28px;}
+  .cs-links{display:flex;flex-wrap:wrap;gap:14px;}
+  .cs-btn{
+    font-family:var(--body-ui);font-weight:600;font-size:14.5px;color:#fff;
+    background:var(--amber);border:1px solid var(--amber);border-radius:999px;
+    padding:11px 22px;transition:transform .2s ease, filter .2s ease;display:inline-block;
+  }
+  .cs-btn:hover{transform:scale(1.035);filter:brightness(1.08);}
+  .cs-btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .cs-btn.ghost:hover{border-color:var(--amber);color:var(--amber);filter:none;transform:translateY(-2px);}
+
+  section.cs-sec{padding:52px 0;border-bottom:1px solid var(--line);}
+  section.cs-sec:last-of-type{border-bottom:0;}
+  .cs-sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;}
+  .cs-sec-label::before{content:"§ ";color:var(--ink-dim);}
+  .cs-sec h2{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.05;margin-bottom:22px;max-width:26ch;}
+  .cs-sec p{font-family:var(--body-ui);color:#ccc7c2;font-size:16.5px;line-height:1.75;max-width:70ch;margin-bottom:16px;}
+  .cs-sec p:last-child{margin-bottom:0;}
+
+  .cs-decision{border-top:1px solid var(--line);padding:22px 0;}
+  .cs-decision:first-of-type{border-top:0;padding-top:0;}
+  .cs-decision h3{font-family:var(--body-ui);font-weight:700;font-size:16.5px;color:var(--ink);margin-bottom:8px;}
+  .cs-decision p{color:#ccc7c2;font-size:15.5px;line-height:1.7;max-width:68ch;margin:0;}
+
+  /* architecture diagram */
+  .cs-diagram{
+    display:flex;align-items:stretch;gap:0;flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .cs-node{
+    flex:1 1 150px;min-width:130px;
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:16px;
+    padding:20px 16px;text-align:center;
+  }
+  .cs-node-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px;}
+  .cs-node-name{font-family:var(--body-ui);font-weight:700;font-size:15px;color:var(--ink);line-height:1.3;}
+  .cs-arrow{
+    display:flex;align-items:center;justify-content:center;
+    color:var(--amber);font-family:var(--mono);font-size:20px;padding:0 8px;flex:0 0 auto;
+  }
+  @media(max-width:720px){
+    .cs-diagram{flex-direction:column;}
+    .cs-arrow{transform:rotate(90deg);padding:6px 0;}
+  }
+
+  .cs-metrics-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;}
+  .cs-metric{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;min-width:160px;flex:1 1 200px;
+  }
+  .cs-metric b{display:block;font-family:var(--display);font-style:italic;font-weight:600;font-size:26px;color:var(--amber);margin-bottom:4px;line-height:1.1;}
+  .cs-metric span{font-family:var(--mono);font-size:11.5px;color:var(--ink-dim);}
+
+  footer{padding:34px 6vw;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--ink-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer a:hover{color:var(--amber);}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="site-logo" href="../index.html">aarya</a>
+  <a class="back-link" href="../index.html#projects"><span>←</span> Back to Portfolio</a>
+</header>
+
+<main>
+  <section class="cs-hero">
+    <div class="cs-eyebrow">Case Study</div>
+    <h1 class="cs-title">FraudShield AI</h1>
+    <p class="cs-tagline">Real-time fraud scoring that turns a 6.86M-transaction dataset into a single API call.</p>
+    <div class="cs-links">
+      <a class="cs-btn" href="https://github.com/Aarya0706/fraud-detection-api" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      <a class="cs-btn ghost" href="https://fraud-detection-api-eta.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Problem</div>
+    <h2>Fraud detection has to be fast, rare-event-aware, and explainable.</h2>
+    <p>Financial fraud detection needs to run in real time on high-volume transaction data, catch rare fraud events without drowning legitimate users in false positives, and be explainable enough for a human reviewer to trust a block decision rather than treat the model as a black box.</p>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Solution</div>
+    <h2>A scored, explained decision — not just a number.</h2>
+    <p>An XGBoost model trained on the full 6.86-million-row PaySim dataset, wrapped in a FastAPI service that returns a fraud probability, a decision, and a short AI-generated explanation of which features actually drove the score — grounded in computed SHAP values, not free-text guessing.</p>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Architecture</div>
+    <div class="cs-diagram">
+      <div class="cs-node"><div class="cs-node-label">Frontend</div><div class="cs-node-name">Static dashboard (HTML)</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">Backend</div><div class="cs-node-name">FastAPI + Uvicorn, Pydantic schemas</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">AI / ML</div><div class="cs-node-name">XGBoost model + SHAP explainer + AI risk summary</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">Database</div><div class="cs-node-name">Versioned model artifacts + metrics.json</div></div>
+      <div class="cs-arrow">→</div>
+      <div class="cs-node"><div class="cs-node-label">Deployment</div><div class="cs-node-name">Render (API) + Vercel (frontend)</div></div>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Technical Decisions</div>
+    <div class="cs-decision"><h3>XGBoost over a deep learning model</h3><p>PaySim's features are already engineered and tabular; gradient boosting matches or beats deep nets on tabular fraud data while training and serving far faster, with feature importances that map directly onto SHAP explanations.</p></div><div class="cs-decision"><h3>imbalanced-learn instead of naive oversampling</h3><p>Fraud is roughly 0.1% of transactions. Naive duplication would overfit to a handful of copied fraud cases, so the class imbalance is corrected during training instead of by inflating the minority class.</p></div><div class="cs-decision"><h3>Deployed threshold picked by F1, not 0.5</h3><p>At a threshold of 0.984, the model trades a small amount of recall for a large drop in false positives — chosen deliberately over a cost-based alternative (~0.66) that would have flagged far more legitimate transactions.</p></div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Challenges</div>
+    <div class="cs-decision"><h3>A feature that looked like leakage — but wasn't</h3><p>One engineered feature (<code>would_drain_orig</code>) dominated importance at 57%, which is exactly the shape a leaked label would take. It had to be specifically audited with a verification script to confirm it was legitimate signal — the transaction would in fact have drained the origin account — not a leak of the fraud label itself.</p></div><div class="cs-decision"><h3>Getting to real numbers, not placeholders</h3><p>Earlier iterations carried stale metrics and a hardcoded 0.5 threshold. Running the full 6.86M-row dataset through the fixed pipeline and updating every reported number — README, in-app About tab, badges — was its own pass of work, separate from the modeling itself.</p></div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Implementation</div>
+    <h2>The model scores; a separate step explains.</h2>
+    <p>The real-time API validates the request schema, runs the XGBoost model, computes a SHAP-based feature-importance breakdown, and passes those computed numbers — not raw predictions — to a small AI call that turns them into a plain-language risk explanation. The model never explains itself in free text directly, which keeps the explanation grounded in numbers that were actually computed.</p>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Results</div>
+    <div class="cs-metrics-row">
+      <div class="cs-metric"><b>0.9997</b><span>ROC-AUC</span></div><div class="cs-metric"><b>95.4%</b><span>Precision</span></div><div class="cs-metric"><b>95.7%</b><span>Recall</span></div><div class="cs-metric"><b>6.86M</b><span>Transactions scored</span></div>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-sec-label">Links</div>
+    <div class="cs-links">
+      <a class="cs-btn" href="https://github.com/Aarya0706/fraud-detection-api" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      <a class="cs-btn ghost" href="https://fraud-detection-api-eta.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Aarya Shirsath — FraudShield AI</span>
+  <a href="../index.html">← Back to Portfolio</a>
+</footer>
+
+</body>
+</html>
