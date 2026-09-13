@@ -332,13 +332,18 @@
   .cert-link:hover{color:var(--amber);}
 
   /* community */
-  #community .cp{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-end;}
-  #community .big{font-family:var(--sans);font-weight:700;font-size:clamp(40px,6vw,70px);color:var(--amber);}
-  #community .cp-label{font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);max-width:30ch;line-height:1.6;margin-top:8px;}
+  #community .cp{display:grid;grid-template-columns:repeat(3, 1fr);gap:40px;align-items:start;}
+  #community .big{font-family:var(--sans);font-weight:700;font-size:clamp(32px,4.2vw,52px);color:var(--amber);}
+  #community .cp-title{font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink);margin-top:14px;}
+  #community .cp-label{font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);max-width:30ch;line-height:1.6;margin-top:6px;}
 
   /* contact */
   #contact{padding-bottom:80px;}
-  #contact h2.sec-title{margin-bottom:30px;}
+  #contact h2.sec-title{margin-bottom:18px;}
+  .contact-tagline{font-family:var(--mono);font-size:14px;color:var(--amber);margin-bottom:18px;}
+  .contact-copy{max-width:560px;color:var(--ink-dim);font-size:16px;line-height:1.6;margin-bottom:10px;}
+  .contact-role{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--ink-dim);margin-bottom:28px;}
+  .contact-cta{display:inline-flex;align-items:center;gap:10px;margin-bottom:44px;}
   .contact-links{display:flex;flex-direction:column;max-width:520px;}
   .contact-links a{
     display:flex;justify-content:space-between;align-items:center;
@@ -354,6 +359,7 @@
     .proj{grid-template-columns:40px 1fr;}
     .proj-links{grid-column:2;align-items:flex-start;padding-top:0;}
     .t-item{grid-template-columns:1fr;gap:6px;}
+    #community .cp{grid-template-columns:1fr;gap:36px;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
@@ -839,9 +845,9 @@
       <div class="applied-row"><span class="applied-skill">LLM Applications</span><span class="applied-arrow">→</span><span class="applied-proj">Temple Heritage · MediAgent</span></div>
       <div class="applied-row"><span class="applied-skill">RAG Systems</span><span class="applied-arrow">→</span><span class="applied-proj">RAG Chatbot</span></div>
       <div class="applied-row"><span class="applied-skill">Multi-Agent Systems</span><span class="applied-arrow">→</span><span class="applied-proj">MediAgent</span></div>
-      <div class="applied-row"><span class="applied-skill">AI Workflow Automation</span><span class="applied-arrow">→</span><span class="applied-proj">MediAgent · EduGrade</span></div>
+      <div class="applied-row"><span class="applied-skill">AI Workflow Design</span><span class="applied-arrow">→</span><span class="applied-proj">MediAgent · EduGrade</span></div>
       <div class="applied-row"><span class="applied-skill">Explainable ML</span><span class="applied-arrow">→</span><span class="applied-proj">FraudShield</span></div>
-      <div class="applied-row"><span class="applied-skill">Classical ML</span><span class="applied-arrow">→</span><span class="applied-proj">FraudShield</span></div>
+      <div class="applied-row"><span class="applied-skill">Applied Machine Learning</span><span class="applied-arrow">→</span><span class="applied-proj">FraudShield</span></div>
       <div class="applied-row"><span class="applied-skill">Reinforcement Learning</span><span class="applied-arrow">→</span><span class="applied-proj">Lunar Landing</span></div>
     </div>
   </div>
@@ -1222,24 +1228,38 @@
   <div class="cp reveal">
     <div>
       <div class="big">15,033</div>
-      <div class="cp-label">Global Rank, TCS CodeVita Season 13 — top ~10% worldwide</div>
+      <div class="cp-title">TCS CodeVita — Season 13</div>
+      <div class="cp-label">Top ~10% worldwide · 90th percentile</div>
       <a class="cert-link" href="https://drive.google.com/file/d/1NnsJs3G7Jfk15UCRLbvGYPyOhxbh2yOk/view?usp=sharing" target="_blank">View Certificate →</a>
     </div>
     <div>
-      <div class="big">50</div>
-      <div class="cp-label">Days, #DrGViswanathanChallenge — DSA in Java</div>
+      <div class="big">50 Days</div>
+      <div class="cp-title">#DrGViswanathanChallenge</div>
+      <div class="cp-label">Daily DSA practice in Java</div>
       <a class="cert-link" href="https://github.com/Aarya0706/50DaysOfCode-Java" target="_blank">GitHub →</a>
+    </div>
+    <div>
+      <div class="big">Research</div>
+      <div class="cp-title">Co-authored Research Paper</div>
+      <div class="cp-label">Study on Edge Computing for Managing High Volume Data</div>
+      <a class="cert-link" href="#" target="_blank">View Research →</a>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="sec-label">09 / Contact</div>
-  <h2 class="sec-title reveal">Let's talk.</h2>
+  <div class="sec-label">10 / Contact</div>
+  <h2 class="sec-title reveal">The next build could be yours.</h2>
+  <p class="contact-tagline reveal">Ideas are cheap. Shipping is the interesting part.</p>
+  <p class="contact-copy reveal">I'm open to opportunities where I can build, learn, and solve real engineering problems.</p>
+  <div class="contact-role reveal">SDE · Backend · AI/ML</div>
+  <div class="contact-cta reveal">
+    <a class="hero-btn hero-btn-primary" href="mailto:arshir07@gmail.com"><span>Start a conversation</span><span class="hero-btn-arrow">→</span></a>
+  </div>
   <div class="contact-links reveal">
-    <a href="mailto:arshir07@gmail.com">Gmail — arshir07@gmail.com <span class="arrow">↗</span></a>
-    <a href="https://github.com/Aarya0706/" target="_blank" rel="noopener noreferrer">GitHub — Aarya0706 <span class="arrow">↗</span></a>
+    <a href="https://github.com/Aarya0706/" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow">↗</span></a>
     <a href="https://www.linkedin.com/in/aarya-shirsath-9b7684340/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arrow">↗</span></a>
+    <a href="mailto:arshir07@gmail.com">Email <span class="arrow">↗</span></a>
   </div>
 </section>
 
