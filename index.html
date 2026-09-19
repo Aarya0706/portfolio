@@ -2358,8 +2358,8 @@
   }
   .lang-card img{display:block;max-width:400px;width:100%;}
   .badge-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-  .badge-icon{width:56px;height:56px;border-radius:50%;transition:transform .2s ease;}
-  .badge-icon:hover{transform:translateY(-3px);}
+  .badge-row .badge-icon{width:56px;height:56px;max-width:56px;flex:0 0 56px;object-fit:cover;border-radius:50%;transition:transform .2s ease;}
+  .badge-row .badge-icon:hover{transform:translateY(-3px);}
   .activity-stat-strip{margin-top:0;padding-top:0;border-top:none;grid-template-columns:repeat(4, 1fr);}
   @media(max-width:640px){.activity-stat-strip{grid-template-columns:repeat(2, 1fr);}}
   .applied-card{margin-top:36px;}
