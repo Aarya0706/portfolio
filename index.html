@@ -1000,21 +1000,22 @@
       <div class="proj-num">02</div>
       <div>
         <div class="proj-title">MediAgent AI</div>
-        <div class="proj-tagline">Multi-agent clinical decision support that triages patients before they see a doctor.</div>
-        <div class="proj-desc">Agentic healthcare platform combining an Intake → Triage → Recommendation agent
-          pipeline with live OpenFDA drug-interaction checks and voice-assisted symptom entry. Every AI
-          assessment ships with an urgency score, a confidence score, and explainable reasoning.</div>
+        <div class="proj-tagline">Agentic hospital triage that scores severity and routes patients before a doctor sees them.</div>
+        <div class="proj-desc">A 3-agent LangChain pipeline — Intake, Triage, Recommendation — that classifies
+          severity, generates an urgency score, and routes patients across 13 hospital departments. Drug interactions
+          are checked live against OpenFDA's FAERS database, with Groq LLaMA3 explaining the result in plain
+          English and zero hallucinated interactions.</div>
         <div class="proj-group">
           <div class="proj-group-label">Stack</div>
-          <div class="proj-meta"><span>LangChain</span><span>Groq</span><span>Streamlit</span><span>SQLAlchemy</span><span>OpenFDA</span></div>
+          <div class="proj-meta"><span>LangChain</span><span>Groq LLaMA3</span><span>Streamlit</span><span>SQLite</span><span>OpenFDA</span></div>
         </div>
         <div class="proj-group">
           <div class="proj-group-label">Engineering</div>
-          <div class="proj-eng"><span>Multi-Agent Pipeline</span><span>RBAC</span><span>OCR</span><span>RAG Chat</span></div>
+          <div class="proj-eng"><span>Multi-Agent Pipeline</span><span>Severity Scoring</span><span>Doctor Portal</span><span>Case Persistence</span></div>
         </div>
         <div class="proj-group">
           <div class="proj-group-label">Metrics</div>
-          <div class="proj-metrics"><span>Routes across 13 departments</span><span>Live OpenFDA lookups</span><span>Voice intake via Whisper</span></div>
+          <div class="proj-metrics"><span>Routes across 13 departments</span><span>Live OpenFDA FAERS lookups</span><span>SQLite-persisted case history</span></div>
         </div>
       </div>
       <div class="proj-links">
@@ -1028,20 +1029,21 @@
       <div>
         <div class="proj-title">FraudShield AI</div>
         <div class="proj-tagline">Real-time fraud scoring that turns a 6.86M-transaction dataset into a single API call.</div>
-        <div class="proj-desc">XGBoost fraud-detection model trained on the full PaySim dataset, deployed as a
-          FastAPI service with Pydantic-validated schemas and AI-generated risk explanations for every
-          flagged transaction. Class imbalance is handled with imbalanced-learn, not naive resampling.</div>
+        <div class="proj-desc">XGBoost fraud-detection model trained on 6.86M PaySim transactions with a time-aware
+          train/test split, deployed as a rate-limited FastAPI service with Pydantic-validated schemas, optional
+          API-key auth, and per-prediction SHAP explanations. Class imbalance is handled with imbalanced-learn, and
+          every training run also computes a business-cost-weighted decision threshold alongside the F1-optimal one.</div>
         <div class="proj-group">
           <div class="proj-group-label">Stack</div>
-          <div class="proj-meta"><span>XGBoost</span><span>Python</span><span>Pydantic</span><span>Render</span><span>Vercel</span></div>
+          <div class="proj-meta"><span>XGBoost</span><span>Python</span><span>FastAPI</span><span>Pydantic</span><span>Render</span><span>Vercel</span></div>
         </div>
         <div class="proj-group">
           <div class="proj-group-label">Engineering</div>
-          <div class="proj-eng"><span>Feature Engineering</span><span>Class Imbalance</span><span>Model Versioning</span><span>SHAP Explanations</span></div>
+          <div class="proj-eng"><span>Feature Engineering</span><span>Class Imbalance</span><span>Time-Aware Split</span><span>SHAP Explanations</span><span>Rate Limiting</span><span>Model Versioning</span></div>
         </div>
         <div class="proj-group">
           <div class="proj-group-label">Metrics</div>
-          <div class="proj-metrics"><span>0.9997 ROC-AUC</span><span>95.4% precision / 95.7% recall</span><span>6.86M rows scored</span></div>
+          <div class="proj-metrics"><span>0.9997 ROC-AUC · 0.9933 PR-AUC</span><span>95.39% precision / 95.68% recall</span><span>6.86M rows scored</span></div>
         </div>
       </div>
       <div class="proj-links">
