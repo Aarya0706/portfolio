@@ -877,9 +877,9 @@
       </div>
       <div class="stats-card streak-native" id="streak-card">
         <div class="sk-grid">
-          <div class="sk-col"><b id="sk-total">&ndash;</b><span>Total Contributions</span><small>Last 12 months</small></div>
+          <div class="sk-col"><div class="sk-val"><b id="sk-total">&ndash;</b></div><span>Total Contributions</span><small>Last 12 months</small></div>
           <div class="sk-col sk-mid"><div class="sk-ring"><b id="sk-cur">&ndash;</b></div><span>Current Streak</span><small id="sk-cur-d">&nbsp;</small></div>
-          <div class="sk-col"><b id="sk-long">&ndash;</b><span>Longest Streak</span><small id="sk-long-d">&nbsp;</small></div>
+          <div class="sk-col"><div class="sk-val"><b id="sk-long">&ndash;</b></div><span>Longest Streak</span><small id="sk-long-d">&nbsp;</small></div>
         </div>
         <p class="stats-fallback" id="sk-fallback" hidden>Live streak unavailable right now &mdash; <a href="https://github.com/Aarya0706" target="_blank" rel="noopener">view on GitHub</a></p>
       </div>
@@ -2621,14 +2621,15 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList
 
 <style id="streak-native-style">
   .streak-native{display:flex;flex-direction:column;justify-content:center;}
-  .sk-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;align-items:center;text-align:center;gap:8px;}
+  .sk-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;align-items:start;text-align:center;gap:8px;}
   .sk-col{display:flex;flex-direction:column;align-items:center;gap:4px;}
   .sk-col b{font-size:30px;font-weight:700;color:var(--ink);line-height:1.1;}
-  .sk-col span{font-size:13px;font-weight:600;color:var(--amber);}
+  .sk-col span{font-size:13px;font-weight:600;color:#f5a623;}
   .sk-col small{font-size:11px;color:var(--ink-dim);min-height:14px;}
-  .sk-ring{width:82px;height:82px;border-radius:50%;border:4px solid var(--amber);display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
+  .sk-val{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
+  .sk-ring{box-sizing:border-box;width:82px;height:82px;border-radius:50%;border:4px solid #f5a623;display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
   .sk-ring b{font-size:30px;}
-  @media(max-width:420px){.sk-col b{font-size:24px;}.sk-ring{width:68px;height:68px;}.sk-ring b{font-size:24px;}}
+  @media(max-width:420px){.sk-col b{font-size:24px;}.sk-val{height:68px;}.sk-ring{width:68px;height:68px;}.sk-ring b{font-size:24px;}}
 </style>
 <script id="streak-native-live">
   // Native GitHub streak card (replaces the rate-limited third-party streak image).
