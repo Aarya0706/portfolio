@@ -875,8 +875,13 @@
       <div class="stats-card">
         <img src="https://github-stats-extended.vercel.app/api?username=Aarya0706&show_icons=true&hide=stars,issues,contribs&hide_border=true&hide_rank=true&bg_color=00000000&title_color=f5a623&text_color=eceeec&icon_color=4fd1ff" alt="Aarya Shirsath's GitHub stats" loading="lazy" onerror="statsImgError(this)">
       </div>
-      <div class="stats-card">
-        <img src="https://streak-stats.demolab.com/?user=Aarya0706&hide_border=true&background=00000000&ring=f5a623&fire=f5a623&currStreakLabel=f5a623&sideNums=eceeec&currStreakNum=eceeec&sideLabels=9aa0a6&dates=9aa0a6&card_width=280" alt="Aarya Shirsath's GitHub streak stats" loading="lazy" onerror="statsImgError(this)">
+      <div class="stats-card streak-native" id="streak-card">
+        <div class="sk-grid">
+          <div class="sk-col"><b id="sk-total">&ndash;</b><span>Total Contributions</span><small>Last 12 months</small></div>
+          <div class="sk-col sk-mid"><div class="sk-ring"><b id="sk-cur">&ndash;</b></div><span>Current Streak</span><small id="sk-cur-d">&nbsp;</small></div>
+          <div class="sk-col"><b id="sk-long">&ndash;</b><span>Longest Streak</span><small id="sk-long-d">&nbsp;</small></div>
+        </div>
+        <p class="stats-fallback" id="sk-fallback" hidden>Live streak unavailable right now &mdash; <a href="https://github.com/Aarya0706" target="_blank" rel="noopener">view on GitHub</a></p>
       </div>
     </div>
     <div class="lang-card">
@@ -2612,6 +2617,64 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList
 if(!lb||!t.length)return;t.forEach(function(o){o.addEventListener('click',function(e){e.preventDefault();lb.classList.add('open');});});
 lb.addEventListener('click',function(){lb.classList.remove('open');});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open');});})();
+</script>
+
+<style id="streak-native-style">
+  .streak-native{display:flex;flex-direction:column;justify-content:center;}
+  .sk-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;align-items:center;text-align:center;gap:8px;}
+  .sk-col{display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .sk-col b{font-size:30px;font-weight:700;color:var(--ink);line-height:1.1;}
+  .sk-col span{font-size:13px;font-weight:600;color:var(--amber);}
+  .sk-col small{font-size:11px;color:var(--ink-dim);min-height:14px;}
+  .sk-ring{width:82px;height:82px;border-radius:50%;border:4px solid var(--amber);display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
+  .sk-ring b{font-size:30px;}
+  @media(max-width:420px){.sk-col b{font-size:24px;}.sk-ring{width:68px;height:68px;}.sk-ring b{font-size:24px;}}
+</style>
+<script id="streak-native-live">
+  // Native GitHub streak card (replaces the rate-limited third-party streak image).
+  // Uses the same public contributions API as the Build Streak number below.
+  (function(){
+    var USER='Aarya0706', KEY='streakCard:v1', TTL=6*60*60*1000;
+    var $=function(id){return document.getElementById(id);};
+    if(!$('streak-card')) return;
+    function fmt(s){var p=s.split('-');return new Date(Date.UTC(+p[0],+p[1]-1,+p[2])).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});}
+    function range(a,b){return a===b?fmt(a):fmt(a)+' \u2013 '+fmt(b);}
+    function compute(days){
+      var total=0,i,best={n:0,s:'',e:''},run=0,rs='';
+      for(i=0;i<days.length;i++){
+        total+=days[i].count;
+        if(days[i].count>0){ if(!run) rs=days[i].date; run++; if(run>best.n) best={n:run,s:rs,e:days[i].date}; }
+        else run=0;
+      }
+      // current streak: today may still be 0 without breaking it
+      var j=days.length-1; if(j>=0&&days[j].count===0) j--;
+      var n=0,e=j>=0?days[j].date:'';
+      while(j>=0&&days[j].count>0){n++;j--;}
+      return {total:total,cur:{n:n,s:n?days[j+1].date:'',e:n?e:''},best:best};
+    }
+    function render(r){
+      $('sk-total').textContent=r.total.toLocaleString('en-US');
+      $('sk-cur').textContent=r.cur.n;
+      $('sk-cur-d').textContent=r.cur.n?range(r.cur.s,r.cur.e):'No active streak';
+      $('sk-long').textContent=r.best.n;
+      $('sk-long-d').textContent=r.best.n?range(r.best.s,r.best.e):'';
+      $('sk-fallback').hidden=true;
+    }
+    var haveCache=false;
+    try{
+      var c=JSON.parse(localStorage.getItem(KEY)||'null');
+      if(c&&c.r){render(c.r);haveCache=true;if(Date.now()-c.t<TTL)return;}
+    }catch(e){}
+    fetch('https://github-contributions-api.jogruber.de/v4/'+USER+'?y=last')
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(d){
+        var days=(d&&d.contributions)||[];
+        if(!days.length)throw new Error('no data');
+        var r=compute(days);render(r);
+        try{localStorage.setItem(KEY,JSON.stringify({r:r,t:Date.now()}));}catch(e){}
+      })
+      .catch(function(){if(!haveCache)$('sk-fallback').hidden=false;});
+  })();
 </script>
 
 <script id="build-streak-live">
