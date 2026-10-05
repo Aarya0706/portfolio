@@ -2664,9 +2664,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList
     var haveCache=false;
     try{
       var c=JSON.parse(localStorage.getItem(KEY)||'null');
-      if(c&&c.r){render(c.r);haveCache=true;if(Date.now()-c.t<TTL)return;}
+      if(c&&c.r){render(c.r);haveCache=true;}
     }catch(e){}
-    fetch('https://github-contributions-api.jogruber.de/v4/'+USER+'?y=last')
+    fetch('https://github-contributions-api.jogruber.de/v4/'+USER+'?y=last',{cache:'no-cache'})
       .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
       .then(function(d){
         var days=(d&&d.contributions)||[];
@@ -2699,10 +2699,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList
       var cached = JSON.parse(localStorage.getItem(KEY) || 'null');
       if(cached && typeof cached.n === 'number'){
         show(cached.n);
-        if(Date.now() - cached.t < TTL) return;
       }
     } catch(e){}
-    fetch('https://github-contributions-api.jogruber.de/v4/' + USER + '?y=last')
+    fetch('https://github-contributions-api.jogruber.de/v4/' + USER + '?y=last', {cache:'no-cache'})
       .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
       .then(function(d){
         var days = (d && d.contributions) || [];
